@@ -1,1 +1,9 @@
-<p>account-list works!</p>
+<ul>
+    <li *ngFor="let account of accounts">
+      <h3>Account ID: {{ account.AccountID }}</h3>
+      <p>Username: {{ account.Username }}</p>
+      <p>Role: {{ account.Role }}</p>
+      <p>Phone Number: {{ account.PhoneNumber }}</p>
+    </li>
+  </ul>
+  

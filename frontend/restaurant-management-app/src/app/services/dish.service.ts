@@ -7,7 +7,7 @@ import { Dish } from '../models/dish.model';
   providedIn: 'root'
 })
 export class DishService {
-  private apiUrl = 'https://localhost:7248/api/dishes';
+  private apiUrl = 'http://localhost:5100/api/dishes';
 
   constructor(private http: HttpClient) { }
 
