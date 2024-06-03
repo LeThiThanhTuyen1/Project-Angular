@@ -1,31 +1,22 @@
 <div class="container" id="container">
-    <div *ngIf="message" class="error-message">
-        {{ message }}
-    </div>
     <div class="form-container sign-in-container">
-        <form #registerForm="ngForm" (ngSubmit)="register()" novalidate>
+        <form (ngSubmit)="register()" novalidate>
             <h1>Đăng Ký</h1>
-
             <div>
                 <input type="text" 
                        required
-                       name="username"
-                       [(ngModel)]="username"
-                       placeholder="Tên tài khoản" #username="ngModel" />
-                <div *ngIf="formSubmitted && username.invalid">
-                    <p class="error-message" *ngIf="username.errors?.['required']">Tên đăng nhập không được để trống</p>
-                </div> 
+                       name="Username"
+                       (keyup)="checkUserName()"
+                       [(ngModel)]="Username"
+                       placeholder="Tên tài khoản" />
             </div>
 
             <div>
                 <input type="password" 
                        required
-                       name="password"
-                       [(ngModel)]="password"
-                       placeholder="Mật khẩu" #password="ngModel" />
-                <div *ngIf="formSubmitted && password.invalid">
-                    <p class="error-message" *ngIf="password.errors?.['required']">Mật khẩu không được để trống</p>
-                </div> 
+                       name="Password"
+                       [(ngModel)]="Password"
+                       placeholder="Mật khẩu" />
             </div>
 
             <div>
@@ -33,34 +24,34 @@
                        required
                        name="confirmPassword"
                        [(ngModel)]="confirmPassword"
-                       placeholder="Nhập lại mật khẩu" #confirmPassword="ngModel" />
-                <div *ngIf="formSubmitted && confirmPassword.invalid">
-                    <p class="error-message" *ngIf="confirmPassword.errors?.['required']">Mật khẩu không được để trống</p>
-                </div>
+                       placeholder="Nhập lại mật khẩu" />
             </div>
-            
+
             <div>
                 <input type="text" 
                        required minlength="10" maxlength="10"
-                       name="Phonenumber"
-                       [(ngModel)]="Phonenumber"
-                       placeholder="Số điện thoại" #Phonenumber="ngModel" />
-                <div *ngIf="formSubmitted && Phonenumber.invalid">
-                    <p class="error-message" *ngIf="Phonenumber.errors?.['required']">Số điện thoại không được để trống</p>
-                    <p class="error-message" *ngIf="Phonenumber.errors?.['minlength'] || Phonenumber.errors?.['maxlength']">Số điện thoại phải bao gồm 10 chữ số</p>
+                       name="PhoneNumber"
+                       [(ngModel)]="PhoneNumber"
+                       placeholder="Số điện thoại"/>
+                <div *ngIf="formSubmitted">
+                    <p class="error-message" *ngIf="PhoneNumber.length < 10 || PhoneNumber.length > 10">Số bao gồm 10 ký tự</p>
                 </div> 
             </div>
 
-            <button type="submit" (click)="formSubmitted = true">Đăng ký</button> 
+            <div *ngIf="message" class="error-message">
+                {{ message }}
+            </div><br>
+
+            <button type="submit">Đăng ký</button>
         </form>
     </div>
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-right">
                 <h1>Xin chào, mừng bạn đến với Nhà hàng DTO!</h1>
-                <p>Nếu bạn đã có tài khoản, hãy nhấn nút "Đăng nhập" ở dưới.</p>
-                <button class="ghost" id="signIn">
-                    <a routerLink="/login" routerLinkActive="active">Đăng nhập</a>
+                <p>Nếu bạn chưa có tài khoản, hãy nhấn nút "Đăng ký" ở dưới.</p>
+                <button class="ghost">
+                    <a routerLink="/login">Đăng nhập</a>
                 </button>
             </div>
         </div>

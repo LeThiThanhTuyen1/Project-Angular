@@ -243,6 +243,14 @@ button a {
     color: #FFFFFF;
 }
 
+.error-message {
+	color: red;
+}
+
+.text-danger {
+	color: red;
+}
+
 footer p {
     margin: 10px 0;
 }

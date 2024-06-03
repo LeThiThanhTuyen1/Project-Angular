@@ -14,7 +14,6 @@ export class AccountListComponent implements OnInit {
   constructor(public accountService: AccountService) { }
 
   ngOnInit(): void {
-    this.accountService.refreshList();
     this.getAccounts();
     this.getAccount(2);
   }

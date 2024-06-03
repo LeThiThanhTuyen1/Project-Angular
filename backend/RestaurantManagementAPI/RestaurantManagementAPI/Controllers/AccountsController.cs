@@ -25,27 +25,35 @@ namespace RestaurantManagementAPI.Controllers
 
         }
 
-        //[HttpPost]
-        //[Route("Register")]
-        ////
-        //public async Task<Object> PostAccountRegister(Account account)
-        //{
-        //    var acc = new Account()
-        //    {
-        //        Username = account.Username,
-        //        PhoneNumber = account.PhoneNumber,
-        //        Role = account.Role
-        //    };
-        //    try
-        //    {
-        //        var result = await _userManager.CreateAsync(acc, account.Password);
-        //        return Ok(result);
-        //    }
-        //    catch (Exception ex) 
-        //    {
-        //        throw ex;
-        //    }
-        //}
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] Account account)
+        {
+            if (account == null)
+            {
+                return BadRequest("Invalid account data.");
+            }
+
+            Console.WriteLine($"Received Account Data: {account.Username}, {account.Password}, {account.Role}, {account.PhoneNumber}");
+
+            if (string.IsNullOrEmpty(account.Username) || string.IsNullOrEmpty(account.Password) ||
+                string.IsNullOrEmpty(account.Role) || string.IsNullOrEmpty(account.PhoneNumber))
+            {
+                return BadRequest("All fields are required.");
+            }
+
+            var existingAccount = await _context.Accounts.AnyAsync(a => a.Username == account.Username || a.PhoneNumber == account.PhoneNumber);
+            if (existingAccount)
+            {
+                return BadRequest("Username or phone number already exists.");
+            }
+
+            _context.Accounts.Add(account);
+            await _context.SaveChangesAsync();
+
+            return Ok("Account registered successfully.");
+        }
+
+
         // GET: api/Accounts
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()

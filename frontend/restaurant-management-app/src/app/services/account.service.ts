@@ -4,12 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Account } from '../models/account.model';
 import { Router } from '@angular/router';
-import { AccountDetailComponent } from '../component/account-detail/account-detail.component';
-import { AccountListComponent } from '../component/account-list/account-list.component';
-import { RegisterComponent } from '../component/register/register.component';
-import { log } from 'console';
-import { NgFor } from '@angular/common';
-import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -17,19 +11,8 @@ import { NgForm } from '@angular/forms';
 export class AccountService {
   private apiUrl = 'http://localhost:5100/api/accounts';
   list: Account[] = [];
- // formData: Account = new Account();
 
   constructor(private http: HttpClient, private router: Router) { }
-
-  refreshList() {
-    this.http.get(this.apiUrl)
-      .subscribe({
-        next: res => {
-          this.list = res as Account[]
-        },
-        error: err => { console.log(err)}
-      })
-  }
 
   getAllAccounts(): Observable<Account[]> {
     return this.http.get<Account[]>(this.apiUrl);
@@ -51,10 +34,6 @@ export class AccountService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  checkUsernameExistsById(id: number): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/${id}`);
-  }
-
   login(username: string, password: string): Observable<any> {
     return this.getAllAccounts().pipe(
       map(accounts => {
@@ -71,25 +50,16 @@ export class AccountService {
     );
   }
 
-  private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error!';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(errorMessage);
-  }
-
-  register(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, { username, password }).pipe(
+  register(username: string, password: string, role: string, phoneNumber: string): Observable<any> {
+    const payload = { Username: username, Password: password, Role: role, PhoneNumber: phoneNumber };
+    console.log('Payload gửi đi:', payload); // Thêm log này để kiểm tra payload
+  
+    return this.http.post<any>(`${this.apiUrl}/register`, payload).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 409) {
-          return throwError('Username already exists');
-        } else if (error.status === 400) {
-          return throwError('Invalid password');
+        if (error.status === 400) {
+          return throwError('Dữ liệu không hợp lệ');
         } else {
-          return throwError('Registration failed');
+          return 'sucess';
         }
       })
     );
@@ -102,5 +72,15 @@ export class AccountService {
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem('currentUser');
-  }  
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+  }
 }
