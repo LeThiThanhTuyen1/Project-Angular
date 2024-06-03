@@ -12,7 +12,23 @@ import { DishDetailComponent } from './component/dish-detail/dish-detail.compone
 import { OrderListComponent } from './component/order-list/order-list.component';
 import { OrderDetailComponent } from './component/order-detail/order-detail.component';
 import { CategoryListComponent } from './component/category-list/category-list.component';
-
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { FormsModule } from '@angular/forms';
+import { AccountService } from './services/account.service';
+import { DishService } from './services/dish.service';
+import { OrderService } from './services/order-detail.service';
+import { OrderDetailService } from './services/order.service';
+import { CategoryService } from './services/category.service';
+import { withFetch } from '@angular/common/http';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,15 +39,33 @@ import { CategoryListComponent } from './component/category-list/category-list.c
     DishListComponent,
     DishDetailComponent,
     OrderListComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,  
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatToolbarModule, 
+    FormsModule
   ],
   providers: [
     provideClientHydration(),
+    provideHttpClient(withFetch()),
+    AccountService,
+    OrderDetailService,
+    OrderService,
+    CategoryService,
+    DishService, 
     provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]

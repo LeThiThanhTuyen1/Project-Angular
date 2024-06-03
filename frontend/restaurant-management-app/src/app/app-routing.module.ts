@@ -8,6 +8,8 @@ import { CategoryDetailComponent } from './component/category-detail/category-de
 import { CategoryListComponent } from './component/category-list/category-list.component';
 import { OrderDetailComponent } from './component/order-detail/order-detail.component';
 import { OrderListComponent } from './component/order-list/order-list.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
 
 const routes: Routes = [
   { path: 'accounts', component: AccountListComponent },
@@ -18,7 +20,9 @@ const routes: Routes = [
   { path: 'dishes/:id', component: DishDetailComponent },
   { path: 'orders', component: OrderListComponent },
   { path: 'orders/:id', component: OrderDetailComponent },
-  { path: '', redirectTo: '/accounts', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
