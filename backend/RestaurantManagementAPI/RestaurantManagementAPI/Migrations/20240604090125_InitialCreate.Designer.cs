@@ -12,7 +12,7 @@ using RestaurantManagementAPI.Data;
 namespace RestaurantManagementAPI.Migrations
 {
     [DbContext(typeof(RestaurantContext))]
-    [Migration("20240601072614_InitialCreate")]
+    [Migration("20240604090125_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -75,6 +75,35 @@ namespace RestaurantManagementAPI.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("RestaurantManagementAPI.Models.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
+                });
+
             modelBuilder.Entity("RestaurantManagementAPI.Models.Dish", b =>
                 {
                     b.Property<int>("DishID")
@@ -103,8 +132,6 @@ namespace RestaurantManagementAPI.Migrations
 
                     b.HasKey("DishID");
 
-                    b.HasIndex("CategoryID");
-
                     b.ToTable("Dishes");
                 });
 
@@ -126,8 +153,6 @@ namespace RestaurantManagementAPI.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("OrderID");
-
-                    b.HasIndex("AccountID");
 
                     b.ToTable("Orders");
                 });
@@ -154,62 +179,7 @@ namespace RestaurantManagementAPI.Migrations
 
                     b.HasKey("OrderDetailID");
 
-                    b.HasIndex("DishID");
-
-                    b.HasIndex("OrderID");
-
                     b.ToTable("OrderDetails");
-                });
-
-            modelBuilder.Entity("RestaurantManagementAPI.Models.Dish", b =>
-                {
-                    b.HasOne("RestaurantManagementAPI.Models.Category", "Category")
-                        .WithMany("Dish")
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("RestaurantManagementAPI.Models.Order", b =>
-                {
-                    b.HasOne("RestaurantManagementAPI.Models.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
-            modelBuilder.Entity("RestaurantManagementAPI.Models.OrderDetail", b =>
-                {
-                    b.HasOne("RestaurantManagementAPI.Models.Dish", "Dish")
-                        .WithMany()
-                        .HasForeignKey("DishID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RestaurantManagementAPI.Models.Order", "Order")
-                        .WithMany("OrderDetail")
-                        .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Dish");
-
-                    b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("RestaurantManagementAPI.Models.Category", b =>
-                {
-                    b.Navigation("Dish");
-                });
-
-            modelBuilder.Entity("RestaurantManagementAPI.Models.Order", b =>
-                {
-                    b.Navigation("OrderDetail");
                 });
 #pragma warning restore 612, 618
         }

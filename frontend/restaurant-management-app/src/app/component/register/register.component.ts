@@ -71,5 +71,5 @@ export class RegisterComponent {
       this.message = 'Làm ơn điền vào các trường còn trống';
     }
   }
-  
+
 }
