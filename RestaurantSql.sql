@@ -46,3 +46,10 @@ CREATE TABLE OrderDetails (
     FOREIGN KEY (DishID) REFERENCES Dishes(DishID)
 );
 
+CREATE TABLE Contacts (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(50) NOT NULL,
+    Email NVARCHAR(50) NOT NULL,
+    Phone NCHAR(10) NOT NULL,
+    Message TEXT NOT NULL
+);
