@@ -29,6 +29,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
+import { FooterBarComponent } from './component/footer-bar/footer-bar.component';
+import { NavBarComponent } from './component/nav-bar/nav-bar.component';
+import { HomeComponent } from './component/home/home.component';
+import { AboutUsComponent } from './component/about-us/about-us.component';
+import { ContactComponent } from './component/contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +46,12 @@ import { provideHttpClient } from '@angular/common/http';
     OrderListComponent,
     OrderDetailComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FooterBarComponent,
+    NavBarComponent,
+    HomeComponent,
+    AboutUsComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

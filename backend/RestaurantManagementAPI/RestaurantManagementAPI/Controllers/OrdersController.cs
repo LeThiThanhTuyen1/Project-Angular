@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagementAPI.Data;
 using RestaurantManagementAPI.Models;
@@ -16,31 +21,29 @@ namespace RestaurantManagementAPI.Controllers
             _context = context;
         }
 
+        // GET: api/Orders
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
-            return await _context.Orders.Include(o => o.OrderDetail).ToListAsync();
+            return await _context.Orders.ToListAsync();
         }
 
+        // GET: api/Orders/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
-            var order = await _context.Orders.Include(o => o.OrderDetail).FirstOrDefaultAsync(o => o.OrderID == id);
+            var order = await _context.Orders.FindAsync(id);
+
             if (order == null)
             {
                 return NotFound();
             }
+
             return order;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Order>> PostOrder(Order order)
-        {
-            _context.Orders.Add(order);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction("GetOrder", new { id = order.OrderID }, order);
-        }
-
+        // PUT: api/Orders/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOrder(int id, Order order)
         {
@@ -50,6 +53,7 @@ namespace RestaurantManagementAPI.Controllers
             }
 
             _context.Entry(order).State = EntityState.Modified;
+
             try
             {
                 await _context.SaveChangesAsync();
@@ -69,6 +73,18 @@ namespace RestaurantManagementAPI.Controllers
             return NoContent();
         }
 
+        // POST: api/Orders
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Order>> PostOrder(Order order)
+        {
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetOrder", new { id = order.OrderID }, order);
+        }
+
+        // DELETE: api/Orders/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(int id)
         {
@@ -80,6 +96,7 @@ namespace RestaurantManagementAPI.Controllers
 
             _context.Orders.Remove(order);
             await _context.SaveChangesAsync();
+
             return NoContent();
         }
 

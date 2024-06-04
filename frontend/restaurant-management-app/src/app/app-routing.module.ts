@@ -10,6 +10,9 @@ import { OrderDetailComponent } from './component/order-detail/order-detail.comp
 import { OrderListComponent } from './component/order-list/order-list.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
+import { HomeComponent } from './component/home/home.component';
+import { AboutUsComponent } from './component/about-us/about-us.component';
+import { ContactComponent } from './component/contact/contact.component';
 
 const routes: Routes = [
   { path: 'accounts', component: AccountListComponent },
@@ -22,7 +25,10 @@ const routes: Routes = [
   { path: 'orders/:id', component: OrderDetailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent},
+  { path: 'about-us', component: AboutUsComponent},
+  { path: 'contact', component: ContactComponent},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
