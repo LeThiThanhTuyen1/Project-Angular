@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Dish } from '../../models/dish.model';
 import { DishService } from '../../services/dish.service';
-
+import { Category } from '../../models/category.model';
+import { CategoryService } from '../../services/category.service';
 @Component({
   selector: 'app-dish-list',
   templateUrl: './dish-list.component.html',
@@ -13,14 +14,19 @@ export class DishListComponent implements OnInit{
   sideDishGroups: Dish[][] = [];
   drinkGroups: Dish[][] = [];
   dishes: Dish[] = [];
+  categories: Category[] = [];
 
-  constructor(public dishService: DishService) { }
+  constructor(public dishService: DishService, public categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.dishService.getAllDishes().subscribe((data: Dish[]) => {
       this.dishes = data;
       this.groupDishes();
       this.getDishes();
+    });
+    this.categoryService.getAllCategories()
+      .subscribe((category: Category[]) => {
+      this.categories = category;
     });
   }
 
