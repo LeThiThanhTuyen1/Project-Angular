@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +14,9 @@ export class LoginComponent {
   public message: string = '';
   public formSubmitted: boolean = false;
 
-  constructor(private accountService: AccountService, private router: Router) {}
+  constructor(private accountService: AccountService, 
+              private authService: AuthService,
+              private router: Router) {}
 
   login(): void {
     this.formSubmitted = true;
@@ -25,7 +27,8 @@ export class LoginComponent {
           console.log('Login response:', response); // Log để kiểm tra response từ server
           if (response === 'success') {
             console.log('Đăng nhập thành công');
-            this.router.navigate(['/dishes']);  // Điều hướng đến trang khác khi đăng nhập thành công
+            this.authService.login();
+            this.router.navigate(['home']);  // Điều hướng đến trang khác khi đăng nhập thành công
           } else {
             this.message = response;  // Hiển thị thông báo lỗi tương ứng
           }

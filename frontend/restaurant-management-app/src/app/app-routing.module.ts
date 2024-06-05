@@ -10,9 +10,9 @@ import { OrderDetailComponent } from './component/order-detail/order-detail.comp
 import { OrderListComponent } from './component/order-list/order-list.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
-import { HomeComponent } from './component/home/home.component';
 import { AboutUsComponent } from './component/about-us/about-us.component';
 import { ContactComponent } from './component/contact/contact.component';
+import { HomeComponent } from './component/home/home.component';
 
 const routes: Routes = [
   { path: 'accounts', component: AccountListComponent },

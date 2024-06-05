@@ -545,7 +545,7 @@ var r=!1;n.isFunction(i)&&(a=i,i=null),n.isPlainObject(e)||t.removeAttr("style")
 
 			// remove spins from original
 			clone.attr('type', 'text').keydown(function (e) {
-				if (!Object.is($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]), -0) ||
+				if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== 0 ||
 					(e.keyCode == 65 && e.ctrlKey === true) || 
 					(e.keyCode >= 35 && e.keyCode <= 39)) {
 					return;
