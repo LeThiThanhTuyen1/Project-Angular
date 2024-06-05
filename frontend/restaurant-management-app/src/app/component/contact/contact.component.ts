@@ -30,6 +30,7 @@ export class ContactComponent {
           response => {
             console.log('Gửi tin nhắn thành công', response);
             this.message = 'Gửi tin nhắn thành công';
+            this.resetForm();
           },
           error => {
             console.error('Gửi tin nhắn thất bại', error); // Log chi tiết lỗi
@@ -42,6 +43,13 @@ export class ContactComponent {
   }
 
   resetForm() {
-    
+    this.cont = {
+      Id: 0,
+      Name: '',
+      Email: '',
+      Phone: '',
+      Message: ''
+    };
+    this.formSubmitted = false;
   }
 }

@@ -1,23 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.css'
+  styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit{
+export class NavBarComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
+  private authSubscription!: Subscription;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    this.isLoggedIn = this.authService.isAuthenticated();
+    this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
   }
 
   logout() {
     this.authService.logout();
-    this.isLoggedIn = false;
     this.router.navigate(['/home']);
+  }
+
+  ngOnDestroy() {
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
   }
 }

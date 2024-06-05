@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,6 +28,7 @@ export class LoginComponent {
           if (response === 'success') {
             console.log('Đăng nhập thành công');
             this.authService.login();
+
             this.router.navigate(['home']);  // Điều hướng đến trang khác khi đăng nhập thành công
           } else {
             this.message = response;  // Hiển thị thông báo lỗi tương ứng
