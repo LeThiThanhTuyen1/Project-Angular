@@ -16,28 +16,19 @@ export class DishListComponent implements OnInit{
   dishes: Dish[] = [];
   categories: Category[] = [];
 
-  constructor(public dishService: DishService, public categoryService: CategoryService) { }
+  constructor(public dishService: DishService, 
+              public categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.dishService.getAllDishes().subscribe((data: Dish[]) => {
       this.dishes = data;
       this.groupDishes();
-      this.getDishes();
     });
     this.categoryService.getAllCategories()
       .subscribe((category: Category[]) => {
       this.categories = category;
     });
-  }
-
-  getDishes(): void {
-    this.dishService.getAllDishes()
-      .subscribe(dishes => {
-        console.log(dishes); // Log dữ liệu ra console
-        this.dishes = dishes;
-      }, error => {
-        console.error('Error fetching dishes:', error);
-      });
+    
   }
 
   groupDishes(): void {
@@ -57,4 +48,5 @@ export class DishListComponent implements OnInit{
     }
     return result;
   }
+
 }

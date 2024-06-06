@@ -13,6 +13,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { AboutUsComponent } from './component/about-us/about-us.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { HomeComponent } from './component/home/home.component';
+import { SearchDishComponent } from './component/search-dish/search-dish.component';
 
 const routes: Routes = [
   { path: 'accounts', component: AccountListComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'about-us', component: AboutUsComponent},
   { path: 'contact', component: ContactComponent},
+  { path: 'search-dish', component: SearchDishComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

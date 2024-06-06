@@ -30,4 +30,10 @@ export class DishService {
   deleteDish(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  searchDishes(keyword: string): Observable<Dish[]> {
+    return this.http.get<Dish[]>(`${this.apiUrl}`, {
+      params: { q: keyword }
+    });
+  }
 }

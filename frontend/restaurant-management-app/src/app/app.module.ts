@@ -35,6 +35,7 @@ import { HomeComponent } from './component/home/home.component';
 import { AboutUsComponent } from './component/about-us/about-us.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { CategoryFilterPipe } from './models/category-filter.pipe';
+import { SearchDishComponent } from './component/search-dish/search-dish.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { CategoryFilterPipe } from './models/category-filter.pipe';
     HomeComponent,
     AboutUsComponent,
     ContactComponent,
-    CategoryFilterPipe
+    CategoryFilterPipe,
+    SearchDishComponent
   ],
   imports: [
     BrowserModule,
