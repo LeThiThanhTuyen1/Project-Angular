@@ -12,7 +12,7 @@ export class RegisterComponent {
   public Password: string = '';
   public confirmPassword: string = '';
   public PhoneNumber: string = '';
-  public Role: string = 'User';
+  public Role: string = 'Customer';
   public message: string = '';
   public formSubmitted: boolean = false;
   usernameExists: boolean = false;

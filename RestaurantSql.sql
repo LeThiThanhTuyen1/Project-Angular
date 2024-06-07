@@ -1,4 +1,4 @@
-CREATE DATABASE RestaurantManagement;
+﻿CREATE DATABASE RestaurantManagement;
 GO
 
 USE RestaurantManagement;
@@ -21,9 +21,9 @@ CREATE TABLE Categories (
 CREATE TABLE Dishes (
     DishID INT PRIMARY KEY IDENTITY(1,1),
     Name NVARCHAR(100) NOT NULL,
-    Description NVARCHAR(255),
+    Description NVARCHAR(500),
     Price DECIMAL(10, 2) NOT NULL,
-    ImageURL NVARCHAR(255),
+    ImageURL NVARCHAR(500),
     CategoryID INT NOT NULL,
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
@@ -53,3 +53,10 @@ CREATE TABLE Contacts (
     Phone NCHAR(10) NOT NULL,
     Message TEXT NOT NULL
 );
+
+INSERT INTO Dishes (Name, Description, Price, ImageURL, CategoryID) VALUES
+('Nigirizushi', 'Nigirizushi cũng là một trong các loại sushi truyền thống ở Nhật Bản. Cơm sushi được nắm ở phía dưới, phía trên đặt một miếng sashimi như cá hồi, cá ngừ, bạch tuộc… Đôi khi trứng cuộn, lươn hay thanh cua cũng được đặt lên kèm theo một miếng rong biển nhỏ cuộn lại.', 1560000, 'https://japanduhoc.com/wp-content/uploads/2020/10/1602597117_499_Cac-loai-Sushi-ngon-nhat-the-gioi-va-cach-an.jpg', 1),
+('Gunkanmaki', 'Gunkanmaki còn được gọi là sushi tàu chiến vì hình dạng của nó. Người ta nắm một nắm cơm, bọc rong biển khô xung quanh và phía trên chứa đầy bắp và mayonnaise, trứng cá, trứng tôm, hoặc… natto.', 1560000, 'https://japanduhoc.com/wp-content/uploads/2020/10/1602597119_550_Cac-loai-Sushi-ngon-nhat-the-gioi-va-cach-an.jpg', 1),
+('Oshizushi', 'Oshizushi là sushi ép khuôn. Cơm sushi được đặt trong một cái khuôn hình chữ nhật, đặt một miếng lươn, cá hồi, trứng,… lên trên rồi đè, ép chặt khuôn lại.', 1560000, 'https://japanduhoc.com/wp-content/uploads/2020/10/1602597124_849_Cac-loai-Sushi-ngon-nhat-the-gioi-va-cach-an.jpg', 1),
+('Uramaki', 'Uramaki là loại sushi mà thành phẩm sẽ là cơm sussi đươc lăn với vừng, mè ở bên ngoài, bên trong là rong biển và nhân đa dạng như các loại sushi khác. Uramaki còn được gọi là “cuốn ngược vào trong".', 1560000, 'https://japanduhoc.com/wp-content/uploads/2020/10/1602597127_795_Cac-loai-Sushi-ngon-nhat-the-gioi-va-cach-an.jpg', 1)
+

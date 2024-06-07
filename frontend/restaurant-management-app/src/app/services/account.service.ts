@@ -43,6 +43,8 @@ export class AccountService {
         } else if (account.Password !== password) {
           return 'Mật khẩu không khớp';
         } else {
+          // Lưu thông tin người dùng vào localStorage sau khi đăng nhập thành công
+          localStorage.setItem('currentUser', JSON.stringify(account));
           return 'success';
         }
       }),

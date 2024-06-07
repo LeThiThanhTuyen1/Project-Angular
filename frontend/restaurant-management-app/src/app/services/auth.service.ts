@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Account } from '../models/account.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +22,25 @@ export class AuthService {
     this.isLoggedInSubject.next(false);
     if (this.isLocalStorageAvailable()) {
       localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('currentUser');
     }
   }
 
-  isAuthenticated() {
+  isAuthenticated(): boolean {
     return this.isLoggedInSubject.value;
+  }
+
+  getCurrentUserRole(): string {
+    const currentUser = this.getCurrentUser();
+    return currentUser ? currentUser.Role : '';
+  }
+
+  getCurrentUser(): Account | null {
+    if (this.isLocalStorageAvailable()) {
+      const currentUser = localStorage.getItem('currentUser');
+      return currentUser ? JSON.parse(currentUser) : null;
+    }
+    return null;
   }
 
   private checkLoginStatus(): boolean {
