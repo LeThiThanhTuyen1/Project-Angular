@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+//component
+import { AppComponent } from './app.component';
 import { AccountListComponent } from './component/account-list/account-list.component';
 import { AccountDetailComponent } from './component/account-detail/account-detail.component';
 import { CategoryDetailComponent } from './component/category-detail/category-detail.component';
@@ -14,12 +16,20 @@ import { OrderDetailComponent } from './component/order-detail/order-detail.comp
 import { CategoryListComponent } from './component/category-list/category-list.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FooterBarComponent } from './component/footer-bar/footer-bar.component';
+import { NavBarComponent } from './component/nav-bar/nav-bar.component';
+import { HomeComponent } from './component/home/home.component';
+import { AboutUsComponent } from './component/about-us/about-us.component';
+import { ContactComponent } from './component/contact/contact.component';
+//service
 import { AccountService } from './services/account.service';
 import { DishService } from './services/dish.service';
 import { OrderService } from './services/order-detail.service';
 import { OrderDetailService } from './services/order.service';
 import { CategoryService } from './services/category.service';
+//model
+import { CategoryFilterPipe } from './models/category-filter.pipe';
+//
 import { withFetch } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,12 +39,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
-import { FooterBarComponent } from './component/footer-bar/footer-bar.component';
-import { NavBarComponent } from './component/nav-bar/nav-bar.component';
-import { HomeComponent } from './component/home/home.component';
-import { AboutUsComponent } from './component/about-us/about-us.component';
-import { ContactComponent } from './component/contact/contact.component';
-import { CategoryFilterPipe } from './models/category-filter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +58,7 @@ import { CategoryFilterPipe } from './models/category-filter.pipe';
     HomeComponent,
     AboutUsComponent,
     ContactComponent,
-    CategoryFilterPipe
+    CategoryFilterPipe,
   ],
   imports: [
     BrowserModule,

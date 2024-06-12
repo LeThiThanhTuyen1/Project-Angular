@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-dish-list',
   templateUrl: './dish-list.component.html',
-  styleUrl: './dish-list.component.css'
+  styleUrls: ['./dish-list.component.css'] 
 })
 export class DishListComponent implements OnInit{
   
@@ -45,10 +45,14 @@ export class DishListComponent implements OnInit{
         this.filteredDishes = this.filterDishesByCategory(this.selectedCategoryId);
       },
       error => {
+        if (error.status === 404) {
+          this.filteredDishes = []; // Thiết lập mảng filteredDishes thành mảng trống
+        }
         console.error('Error fetching search results', error);
       }
     );
   }
+  
 
   getAllDishes(): void {
     this.dishService.getAllDishes().subscribe(

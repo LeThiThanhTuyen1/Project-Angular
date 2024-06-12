@@ -260,3 +260,4 @@ E:\project-angular\backend\RestaurantManagementAPI\RestaurantManagementAPI\bin\D
 E:\project-angular\backend\RestaurantManagementAPI\RestaurantManagementAPI\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 E:\project-angular\backend\RestaurantManagementAPI\RestaurantManagementAPI\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 E:\project-angular\backend\RestaurantManagementAPI\RestaurantManagementAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\project-angular\backend\RestaurantManagementAPI\RestaurantManagementAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
