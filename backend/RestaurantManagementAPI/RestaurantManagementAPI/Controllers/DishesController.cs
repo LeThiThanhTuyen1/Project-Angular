@@ -42,6 +42,21 @@ namespace RestaurantManagementAPI.Controllers
             return dish;
         }
 
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<Dish>>> SearchDishes(string keyword)
+        {
+            var dishes = await _context.Dishes
+                                       .Where(d => d.Name.Contains(keyword))
+                                       .ToListAsync();
+
+            if (dishes == null || dishes.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(dishes);
+        }
+
         // PUT: api/Dishes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -98,6 +113,19 @@ namespace RestaurantManagementAPI.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        [HttpGet("category/{categoryId}")]
+        public async Task<ActionResult<IEnumerable<Dish>>> GetDishesByCategory(int categoryId)
+        {
+            var dishes = await _context.Dishes.Where(d => d.CategoryID == categoryId).ToListAsync();
+
+            if (dishes == null || dishes.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(dishes);
         }
 
         private bool DishExists(int id)

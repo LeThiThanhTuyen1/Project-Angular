@@ -1,38 +1,44 @@
-<!-- coffee section start -->
+<!-- dishes.component.html -->
 <div class="coffee_section layout_padding">
    <div class="container">
-      <div class="row">
-         <h1 class="coffee_taital">THỰC ĐƠN CỦA CHÚNG TÔI</h1>
-         <div class="bulit_icon"><img src="assets/images/bulit-icon.png"></div>
+     <div class="row">
+       <h1 class="coffee_taital">THỰC ĐƠN CỦA CHÚNG TÔI</h1>
+       <div class="bulit_icon"><img src="assets/images/bulit-icon.png"></div>
+       <div class="category-menu">
+        <a href="#" 
+           class="category-item" 
+           *ngFor="let category of categories" 
+           [class.selected]="selectedCategoryId === category.CategoryID"
+           (click)="filterByCategory($event, category.CategoryID)">
+          {{ category.Name }} ({{ getCategoryCount(category.CategoryID) }})
+        </a>
       </div>
+     </div>
    </div>
    <div class="coffee_section_2">
-      <div id="main_slider" class="carousel slide" data-ride="carousel">
-         <div class="carousel-inner">
-            <div *ngFor="let category of categories; let i = index" class="carousel-item" [class.active]="i == 0">
-               <div class="container-fluid">
-                  <div class="row">
-                     <div class="col-md-12">
-                         <h1 class="about_taital">{{ category.Name }}</h1>
-                     </div>
-                     <div *ngFor="let dish of dishes | categoryFilter: category.CategoryID; let j = index" class="col-lg-3 col-md-6" [class.active]="j < 4">
-                         <div class="coffee_img"><img style="width: 300px; height: 200px;" src="{{dish.ImageURL}}"></div>
-                         <h3 class="types_text">{{ dish.Name }}</h3>
-                         <p class="looking_text">{{ dish.Price }} VNĐ</p>
-                         <div style="width: 300px;" class="read_bt"><a style="margin-right: 20px;" href="#" [routerLink]="">Đặt ngay</a><a href="dish-detail" [routerLink]="['/dish-detail', dish.DishID]">Xem thêm</a></div>
-                         <br>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-         <i class="fa fa-arrow-left"></i>
-         </a>
-         <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
-         <i class="fa fa-arrow-right"></i>
-         </a>
-      </div>
+     <div class="container-fluid">
+       <div class="row">
+         <ng-container *ngIf="filteredDishes.length > 0; else noResults">
+           <div *ngFor="let dish of filteredDishes" class="col-lg-3 col-md-6">
+             <div class="coffee_img">
+               <img style="width: 300px; height: 200px;" src="{{dish.ImageURL}}">
+             </div>
+             <h3 class="types_text">{{ dish.Name }}</h3>
+             <p class="looking_text">{{ dish.Price }} VNĐ</p>
+             <div style="width: 300px;" class="read_bt">
+               <a style="margin-right: 20px;" href="#" [routerLink]="">Đặt ngay</a>
+               <a href="dish-detail" [routerLink]="['/dish-detail', dish.DishID]">Xem thêm</a>
+             </div>
+             <br>
+           </div>
+         </ng-container>
+         <ng-template #noResults>
+           <div class="col-md-12">
+             <h3 class="types_text">Không tìm thấy theo từ khóa "{{ searchKeyword }}"</h3>
+           </div>
+         </ng-template>
+       </div>
+     </div>
    </div>
-</div>
-<!-- coffee section end -->
+ </div>
+ 

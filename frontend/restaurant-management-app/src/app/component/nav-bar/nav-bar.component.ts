@@ -35,6 +35,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   onSearch(): void {
-    this.router.navigate(['/search-dish'], { queryParams: { q: this.searchKeyword } });
+    if (this.searchKeyword) {
+      this.router.navigate(['/dishes'], { queryParams: { search: this.searchKeyword } });
+    }
   }
 }

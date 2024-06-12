@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "E:\\project-angular\\backend\\RestaurantManagementAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|e:\\project-angular\\backend\\restaurantmanagementapi\\restaurantmanagementapi\\controllers\\dishescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|solutionrelative:restaurantmanagementapi\\controllers\\dishescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|e:\\project-angular\\backend\\restaurantmanagementapi\\restaurantmanagementapi\\models\\dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|solutionrelative:restaurantmanagementapi\\models\\dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|e:\\project-angular\\backend\\restaurantmanagementapi\\restaurantmanagementapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|solutionrelative:restaurantmanagementapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -42,16 +50,8 @@
       "RelativeMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|solutionrelative:restaurantmanagementapi\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|e:\\project-angular\\backend\\restaurantmanagementapi\\restaurantmanagementapi\\controllers\\dishescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|solutionrelative:restaurantmanagementapi\\controllers\\dishescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|e:\\project-angular\\backend\\restaurantmanagementapi\\restaurantmanagementapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|solutionrelative:restaurantmanagementapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|e:\\project-angular\\backend\\restaurantmanagementapi\\restaurantmanagementapi\\models\\dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|solutionrelative:restaurantmanagementapi\\models\\dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C90B2F51-4799-45E9-A670-AAF360E8B889}|RestaurantManagementAPI\\RestaurantManagementAPI.csproj|e:\\project-angular\\backend\\restaurantmanagementapi\\restaurantmanagementapi\\models\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -92,7 +92,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 286,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -115,8 +115,25 @@
               "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Program.cs",
+              "RelativeDocumentMoniker": "RestaurantManagementAPI\\Program.cs",
+              "ToolTip": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Program.cs",
+              "RelativeToolTip": "RestaurantManagementAPI\\Program.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAowBMAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T06:45:39.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "20240604090125_InitialCreate.cs",
               "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Migrations\\20240604090125_InitialCreate.cs",
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Migrations\\20240604090125_InitialCreate.cs",
@@ -128,24 +145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Program.cs",
-              "RelativeDocumentMoniker": "RestaurantManagementAPI\\Program.cs",
-              "ToolTip": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Program.cs",
-              "RelativeToolTip": "RestaurantManagementAPI\\Program.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAwwBMAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T06:45:39.436Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ContactsController.cs",
               "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Controllers\\ContactsController.cs",
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Controllers\\ContactsController.cs",
@@ -157,7 +157,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Contact.cs",
               "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Models\\Contact.cs",
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Models\\Contact.cs",
@@ -169,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "OrderDetailsController.cs",
               "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Controllers\\OrderDetailsController.cs",
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Controllers\\OrderDetailsController.cs",
@@ -181,19 +181,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
               "Title": "DishesController.cs",
               "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Controllers\\DishesController.cs",
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Controllers\\DishesController.cs",
               "ToolTip": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Controllers\\DishesController.cs",
               "RelativeToolTip": "RestaurantManagementAPI\\Controllers\\DishesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAACAAAAAAAAAAAAA1wDkAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T04:40:19.603Z"
+              "WhenOpened": "2024-06-04T04:40:19.603Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 1,
               "Title": "Dish.cs",
               "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Models\\Dish.cs",
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Models\\Dish.cs",
@@ -201,11 +202,12 @@
               "RelativeToolTip": "RestaurantManagementAPI\\Models\\Dish.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T07:09:33.126Z"
+              "WhenOpened": "2024-05-31T07:09:33.126Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Category.cs",
               "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Models\\Category.cs",
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Models\\Category.cs",
@@ -217,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "RestaurantContext.cs",
               "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Data\\RestaurantContext.cs",
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Data\\RestaurantContext.cs",
@@ -229,7 +231,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "OrdersController.cs",
               "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Controllers\\OrdersController.cs",
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Controllers\\OrdersController.cs",
@@ -253,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Account.cs",
               "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Models\\Account.cs",
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Models\\Account.cs",
@@ -265,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Controllers\\CategoriesController.cs",
@@ -349,7 +351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "dbo.Contact [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/MSI_SQLEXPRESS/RestaurantManagement/True/SqlTable/dbo.Contact.sql",
               "ToolTip": "dbo.Contact [Data]",
