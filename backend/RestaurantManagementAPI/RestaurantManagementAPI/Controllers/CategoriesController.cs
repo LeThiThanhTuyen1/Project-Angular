@@ -42,6 +42,22 @@ namespace RestaurantManagementAPI.Controllers
             return category;
         }
 
+        [HttpGet("{id}/name")]
+        public async Task<ActionResult<string>> GetCategoryName(int id)
+        {
+            var category = await _context.Categories
+                .Where(c => c.CategoryID == id)
+                .Select(c => c.Name)
+                .FirstOrDefaultAsync();
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            return category;
+        }
+        
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

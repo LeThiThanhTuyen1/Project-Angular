@@ -1,0 +1,33 @@
+
+  <div style="margin-bottom: 70px;" class="container mt-5">
+    <h1 class="mb-4">Danh sách Tài khoản </h1>
+    <button class="btn btn-primary mb-3">Thêm Tài Khoản</button>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên tài khoản</th>
+          <th>Mật khẩu</th>
+          <th>Vai trò</th>
+          <th>Số điện thoại</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let account of accounts">
+          <td>{{ account.AccountID }}</td>
+          <td>{{ account.Username }}</td>
+          <td>{{ account.Password }}</td>
+          <td>{{ account.Role }}</td>
+          <td>{{ account.PhoneNumber }}</td>
+          <td>
+            <button class="btn btn-warning mr-2">Sửa</button>
+            <button class="btn btn-danger">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+    <!-- <h2>Thông tin tài khoản</h2>
+    <p><strong>Account ID:</strong> {{ selectedAccount?.AccountID }}</p>-->

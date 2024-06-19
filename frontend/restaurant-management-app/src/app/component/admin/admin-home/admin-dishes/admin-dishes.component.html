@@ -1,0 +1,32 @@
+<div style="margin-bottom: 70px;" class="container mt-5">
+    <h1 class="mb-4">Danh sách Món ăn</h1>
+    <button class="btn btn-primary mb-3">Thêm Món ăn</button>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên Món ăn</th>
+          <th>Mô Tả</th>
+          <th>Giá</th>
+          <th>URL Hình ảnh</th>
+          <th>Danh Mục</th>
+          <th style="width: 140px;">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dish of dishes">
+          <td>{{ dish.DishID }}</td>
+          <td>{{ dish.Name }}</td>
+          <td>{{ dish.Description }}</td>
+          <td>{{ dish.Price }}</td>
+          <td><img src="{{ dish.ImageURL }}"></td>
+          <td>{{ categoryNames[dish.CategoryID] }}</td>
+          <td>
+            <button class="btn btn-warning mr-2">Sửa</button>
+            <button class="btn btn-danger">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

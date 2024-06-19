@@ -133,20 +133,6 @@ namespace RestaurantManagementAPI.Controllers
             return NoContent();
         }
 
-        // GET: api/Accounts/role/username
-        [HttpGet("role/{username}")]
-        public async Task<ActionResult<string>> GetRoleByUsername(string username)
-        {
-            var account = await _context.Accounts.SingleOrDefaultAsync(a => a.Username == username);
-
-            if (account == null)
-            {
-                return NotFound("Username not found.");
-            }
-
-            return Ok(account.Role);
-        }
-        
         private bool AccountExists(int id)
         {
             return _context.Accounts.Any(e => e.AccountID == id);

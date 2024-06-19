@@ -7,6 +7,6 @@ export interface Dish {
     Price: number;
     ImageURL: string;
     CategoryID: number;
-    Category: Category;
+   // Category: Category;
   }
   

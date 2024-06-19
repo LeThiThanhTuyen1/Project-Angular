@@ -8,7 +8,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          <li *ngIf="role !== 'Admin'" class="nav-item active">
             <div class="search-box">
               <input type="text" class="search-input" placeholder="Tìm kiếm..." [(ngModel)]="searchKeyword">
               <button (click)="onSearch()" class="search-button">
@@ -16,6 +16,7 @@
               </button>
             </div>
           </li>
+           <!-- Admin -->
           <li class="nav-item" *ngIf="role === 'Admin'">
             <a class="nav-link" href="admin/home" routerLink="admin/home">Admin Home</a>
           </li>
@@ -23,12 +24,12 @@
             <a class="nav-link" href="catogories" routerLink="categories">Danh mục</a>
           </li>
           <li class="nav-item" *ngIf="role === 'Admin'">
-            <a class="nav-link" href="dish-admin" routerLink="dish-admin">Món Ăn</a>
+            <a class="nav-link" href="admin/dishes" routerLink="admin/dishes">Món Ăn</a>
           </li>
           <li class="nav-item" *ngIf="role === 'Admin'">
             <a class="nav-link" href="accounts" routerLink="accounts">Tài khoản</a>
           </li>
-
+          <!-- User -->
           <li class="nav-item" *ngIf="role !== 'Admin'">
             <a class="nav-link" href="home" routerLink="home">Trang chủ</a>
           </li>

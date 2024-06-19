@@ -18,6 +18,10 @@ export class CategoryService {
   getCategoryById(id: number): Observable<Category> {
     return this.http.get<Category>(`${this.apiUrl}/${id}`);
   }
+
+  getCategoryNameById(id: number): Observable<string> {
+    return this.http.get(`${this.apiUrl}/${id}/name`, { responseType: 'text' });
+  }
  
   createCategory(category: Category): Observable<Category> {
     return this.http.post<Category>(this.apiUrl, category);

@@ -4,9 +4,9 @@ import { Dish } from './dish.model';
 export interface OrderDetail {
     OrderDetailID: number;
     OrderID: number;
-    Order: Order;
+    //Order: Order;
     DishID: number;
-    Dish: Dish;
+    //Dish: Dish;
     Quantity: number;
     UnitPrice: number;
   }
