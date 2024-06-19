@@ -43,18 +43,21 @@ export class AccountService {
         } else if (account.Password !== password) {
           return 'Mật khẩu không khớp';
         } else {
-          // Lưu thông tin người dùng vào localStorage sau khi đăng nhập thành công
-          localStorage.setItem('currentUser', JSON.stringify(account));
-          return 'success';
+          return { status: 'success', role: account.Role };
         }
       }),
       catchError(this.handleError)
     );
   }
 
+  getRoleByUsername(username: string): Observable<string> {
+    return this.http.get<string>(`${this.apiUrl}/role/${username}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   register(username: string, password: string, role: string, phoneNumber: string): Observable<any> {
     const payload = { Username: username, Password: password, Role: role, PhoneNumber: phoneNumber };
-    console.log('Payload gửi đi:', payload); // Thêm log này để kiểm tra payload
   
     return this.http.post<any>(`${this.apiUrl}/register`, payload).pipe(
       catchError((error: HttpErrorResponse) => {

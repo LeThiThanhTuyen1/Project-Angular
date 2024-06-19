@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AccountService } from '../../services/account.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AccountService } from '../../../services/account.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,11 +25,14 @@ export class LoginComponent {
       this.accountService.login(this.username, this.password).subscribe(
         response => {
           console.log('Login response:', response); // Log để kiểm tra response từ server
-          if (response === 'success') {
+          if (response.status === 'success') {
+            this.authService.login(response.role);
             console.log('Đăng nhập thành công');
-            this.authService.login();
-
-            this.router.navigate(['home']);  // Điều hướng đến trang khác khi đăng nhập thành công
+            if (response.role === 'Admin') {
+              this.router.navigate(['/admin/home']);
+            } else {
+              this.router.navigate(['/home']);
+            }
           } else {
             this.message = response;  // Hiển thị thông báo lỗi tương ứng
           }

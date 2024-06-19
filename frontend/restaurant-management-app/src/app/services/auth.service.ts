@@ -1,63 +1,34 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Account } from '../models/account.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedInSubject = new BehaviorSubject<boolean>(this.checkLoginStatus());
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
+  private roleSubject = new BehaviorSubject<string>('');
+  role$ = this.roleSubject.asObservable();
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  login() {
+  login(role: string) {
     this.isLoggedInSubject.next(true);
-    if (this.isLocalStorageAvailable()) {
-      localStorage.setItem('isLoggedIn', 'true');
-    }
+    this.roleSubject.next(role);
   }
 
   logout() {
     this.isLoggedInSubject.next(false);
-    if (this.isLocalStorageAvailable()) {
-      localStorage.removeItem('isLoggedIn');
-      localStorage.removeItem('currentUser');
-    }
+    this.roleSubject.next('');
+    this.router.navigate(['/home']);
   }
 
   isAuthenticated(): boolean {
     return this.isLoggedInSubject.value;
   }
 
-  getCurrentUserRole(): string {
-    const currentUser = this.getCurrentUser();
-    return currentUser ? currentUser.Role : '';
-  }
-
-  getCurrentUser(): Account | null {
-    if (this.isLocalStorageAvailable()) {
-      const currentUser = localStorage.getItem('currentUser');
-      return currentUser ? JSON.parse(currentUser) : null;
-    }
-    return null;
-  }
-
-  private checkLoginStatus(): boolean {
-    if (this.isLocalStorageAvailable()) {
-      return localStorage.getItem('isLoggedIn') === 'true';
-    }
-    return false;
-  }
-
-  private isLocalStorageAvailable(): boolean {
-    try {
-      const test = 'test';
-      localStorage.setItem(test, test);
-      localStorage.removeItem(test);
-      return true;
-    } catch (e) {
-      return false;
-    }
+  getRole(): string {
+    return this.roleSubject.value;
   }
 }

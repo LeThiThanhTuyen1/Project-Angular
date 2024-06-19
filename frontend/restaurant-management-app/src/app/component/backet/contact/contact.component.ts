@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ContactService } from '../../services/contact.service';
+import { ContactService } from '../../../services/contact.service';
 import { Router } from '@angular/router';
-import { Contact } from '../../models/contact.model';
+import { Contact } from '../../../models/contact.model';
 
 @Component({
   selector: 'app-contact',

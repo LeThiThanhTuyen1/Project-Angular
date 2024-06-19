@@ -3,16 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountDetailComponent } from './component/account-detail/account-detail.component';
 import { AccountListComponent } from './component/account-list/account-list.component';
 import { DishDetailComponent } from './component/dish-detail/dish-detail.component';
-import { DishListComponent } from './component/dish-list/dish-list.component';
+import { DishListComponent } from './component/customer/dish-list/dish-list.component';
 import { CategoryDetailComponent } from './component/category-detail/category-detail.component';
 import { CategoryListComponent } from './component/category-list/category-list.component';
 import { OrderDetailComponent } from './component/order-detail/order-detail.component';
 import { OrderListComponent } from './component/order-list/order-list.component';
-import { LoginComponent } from './component/login/login.component';
-import { RegisterComponent } from './component/register/register.component';
-import { AboutUsComponent } from './component/about-us/about-us.component';
-import { ContactComponent } from './component/contact/contact.component';
-import { HomeComponent } from './component/home/home.component';
+import { LoginComponent } from './component/backet/login/login.component';
+import { RegisterComponent } from './component/customer/register/register.component';
+import { AboutUsComponent } from './component/backet/about-us/about-us.component';
+import { ContactComponent } from './component/backet/contact/contact.component';
+import { HomeComponent } from './component/customer/home/home.component';
+import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 
 const routes: Routes = [
   { path: 'accounts', component: AccountListComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'home', component: HomeComponent},
   { path: 'about-us', component: AboutUsComponent},
+  { path: 'admin/home', component: AdminHomeComponent},
   { path: 'contact', component: ContactComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

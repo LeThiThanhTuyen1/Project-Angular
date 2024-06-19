@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Dish } from '../../models/dish.model';
-import { DishService } from '../../services/dish.service';
-import { Category } from '../../models/category.model';
-import { CategoryService } from '../../services/category.service';
+import { Dish } from '../../../models/dish.model';
+import { DishService } from '../../../services/dish.service';
+import { Category } from '../../../models/category.model';
+import { CategoryService } from '../../../services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-dish-list',

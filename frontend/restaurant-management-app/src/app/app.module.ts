@@ -5,22 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 //component
+import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 import { AppComponent } from './app.component';
 import { AccountListComponent } from './component/account-list/account-list.component';
 import { AccountDetailComponent } from './component/account-detail/account-detail.component';
 import { CategoryDetailComponent } from './component/category-detail/category-detail.component';
-import { DishListComponent } from './component/dish-list/dish-list.component';
+import { DishListComponent } from './component/customer/dish-list/dish-list.component';
 import { DishDetailComponent } from './component/dish-detail/dish-detail.component';
 import { OrderListComponent } from './component/order-list/order-list.component';
 import { OrderDetailComponent } from './component/order-detail/order-detail.component';
 import { CategoryListComponent } from './component/category-list/category-list.component';
-import { LoginComponent } from './component/login/login.component';
-import { RegisterComponent } from './component/register/register.component';
-import { FooterBarComponent } from './component/footer-bar/footer-bar.component';
-import { NavBarComponent } from './component/nav-bar/nav-bar.component';
-import { HomeComponent } from './component/home/home.component';
-import { AboutUsComponent } from './component/about-us/about-us.component';
-import { ContactComponent } from './component/contact/contact.component';
+import { LoginComponent } from './component/backet/login/login.component';
+import { RegisterComponent } from './component/customer/register/register.component';
+import { FooterBarComponent } from './component/backet/footer-bar/footer-bar.component';
+import { NavBarComponent } from './component/backet/nav-bar/nav-bar.component';
+import { HomeComponent } from './component/customer/home/home.component';
+import { AboutUsComponent } from './component/backet/about-us/about-us.component';
+import { ContactComponent } from './component/backet/contact/contact.component';
 //service
 import { AccountService } from './services/account.service';
 import { DishService } from './services/dish.service';
@@ -59,6 +60,7 @@ import { provideHttpClient } from '@angular/common/http';
     AboutUsComponent,
     ContactComponent,
     CategoryFilterPipe,
+    AdminHomeComponent,
   ],
   imports: [
     BrowserModule,

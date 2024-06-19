@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Dish } from '../../models/dish.model';
+import { Dish } from '../../../models/dish.model';
 import { Router } from '@angular/router';
-import { ContactComponent } from '../contact/contact.component';
-import { DishService } from '../../services/dish.service';
+import { ContactComponent } from '../../backet/contact/contact.component';
+import { DishService } from '../../../services/dish.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
