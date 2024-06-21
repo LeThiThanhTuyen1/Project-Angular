@@ -24,6 +24,8 @@
     "@angular/platform-server": "^18.0.0",
     "@angular/router": "^18.0.0",
     "@angular/ssr": "^18.0.2",
+    "@types/bootstrap": "^5.2.10",
+    "bootstrap": "^5.3.3",
     "font-awesome": "^4.7.0",
     "ngx-toastr": "^19.0.0",
     "swiper": "^11.1.4",

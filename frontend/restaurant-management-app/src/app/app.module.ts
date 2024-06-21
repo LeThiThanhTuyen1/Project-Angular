@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -75,7 +76,8 @@ import { AdminDishesComponent } from './component/admin/admin-home/admin-dishes/
     MatButtonModule,
     MatSidenavModule,
     MatToolbarModule, 
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [
     provideClientHydration(),

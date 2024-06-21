@@ -1,7 +1,6 @@
-<!-- category-list.component.html -->
 <div style="margin-bottom: 70px;" class="container mt-5">
   <h1 class="mb-4">Danh sách Danh mục</h1>
-  <button class="btn btn-primary mb-3">Thêm Danh Mục</button>
+  <button class="btn btn-primary mb-3" onclick="document.getElementById('id02').style.display='block'">Thêm Danh Mục</button>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -17,10 +16,68 @@
         <td>{{ category.Name }}</td>
         <td>{{ category.Description }}</td>
         <td>
-          <button class="btn btn-warning mr-2">Sửa</button>
-          <button class="btn btn-danger">Xóa</button>
+          <button class="btn btn-warning mr-2" onclick="document.getElementById('id01').style.display='block'">Sửa</button>
+          <button class="btn btn-danger" (click)="deleteCategory(category)">Xóa</button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<!-- Add Modal -->
+<div id="id02" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Thêm Danh Mục Mới</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id02').style.display='none'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="Name" class="form-label">Tên Danh Mục</label>
+            <input type="text" class="form-control" id="Name" name="Name" required>
+          </div>
+          <div class="mb-3">
+            <label for="Description" class="form-label">Mô tả</label>
+            <textarea class="form-control" id="Description" name="Description" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Lưu</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="id01" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Sửa Danh Mục</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id01').style.display='none'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="Name" class="form-label">Tên Danh Mục</label>
+            <input type="text" class="form-control" id="Name" name="Name" required>
+          </div>
+          <div class="mb-3">
+            <label for="Description" class="form-label">Mô tả</label>
+            <textarea class="form-control" id="Description" name="Description" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-warning mr-2">Lưu</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

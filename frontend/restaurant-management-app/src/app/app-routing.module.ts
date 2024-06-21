@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'admin/home', component: AdminHomeComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'admin/dishes', component: AdminDishesComponent},
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: 'categories', pathMatch: 'full' },
 ];
 
 @NgModule({
