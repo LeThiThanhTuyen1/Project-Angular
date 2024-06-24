@@ -4,9 +4,7 @@
     {
         public int OrderID { get; set; }
         public int AccountID { get; set; }
-        public Account Account { get; set; }
         public DateTime OrderDate { get; set; }
         public decimal TotalAmount { get; set; }
-        public ICollection<OrderDetail> OrderDetail { get; set; }
     }
 }

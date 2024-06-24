@@ -1,12 +1,12 @@
 import { Category } from './category.model';
 
 export interface Dish {
-    dishID: number;
-    name: string;
-    description: string;
-    price: number;
-    imageURL: string;
-    categoryID: number;
-    category: Category;
+    DishID: number;
+    Name: string;
+    Description: string;
+    Price: number;
+    ImageURL: string;
+    CategoryID: number;
+   // Category: Category;
   }
   

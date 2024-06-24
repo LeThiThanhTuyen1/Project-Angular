@@ -7,7 +7,7 @@ import { Dish } from '../models/dish.model';
   providedIn: 'root'
 })
 export class DishService {
-  private apiUrl = 'https://localhost:7248/api/dishes';
+  private apiUrl = 'http://localhost:5100/api/dishes';
 
   constructor(private http: HttpClient) { }
 
@@ -29,5 +29,13 @@ export class DishService {
 
   deleteDish(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  
+  searchDishes(keyword: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/search?keyword=${keyword}`);
+  }
+
+  getDishesByCategory(categoryId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/category/${categoryId}`);
   }
 }
