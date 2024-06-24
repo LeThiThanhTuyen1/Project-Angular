@@ -9,15 +9,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 import { AppComponent } from './app.component';
 import { AccountListComponent } from './component/admin/admin-home/account-list/account-list.component';
-import { AccountDetailComponent } from './component/account-detail/account-detail.component';
-import { CategoryDetailComponent } from './component/category-detail/category-detail.component';
 import { DishListComponent } from './component/customer/dish-list/dish-list.component';
 import { DishDetailComponent } from './component/customer/dish-detail/dish-detail.component';
 import { OrderListComponent } from './component/order-list/order-list.component';
 import { OrderDetailComponent } from './component/order-detail/order-detail.component';
 import { CategoryListComponent } from './component/admin/admin-home/category-list/category-list.component';
 import { LoginComponent } from './component/backet/login/login.component';
-import { RegisterComponent } from './component/customer/register/register.component';
+import { RegisterComponent } from './component/backet/register/register.component';
 import { FooterBarComponent } from './component/backet/footer-bar/footer-bar.component';
 import { NavBarComponent } from './component/backet/nav-bar/nav-bar.component';
 import { HomeComponent } from './component/customer/home/home.component';
@@ -46,9 +44,7 @@ import { AdminDishesComponent } from './component/admin/admin-home/admin-dishes/
   declarations: [
     AppComponent,
     AccountListComponent,
-    AccountDetailComponent,
     CategoryListComponent,
-    CategoryDetailComponent,
     DishListComponent,
     DishDetailComponent,
     OrderListComponent,

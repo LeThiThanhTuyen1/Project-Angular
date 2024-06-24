@@ -73,7 +73,6 @@ export class CategoryListComponent implements OnInit {
         (response) => {
           console.log('Category deleted successfully:', category);
           this.loadCategories(); 
-          alert('Xóa thành công.');
         },
         error => {
           alert('Không thể xóa vì ràng buộc dữ liệu.');
