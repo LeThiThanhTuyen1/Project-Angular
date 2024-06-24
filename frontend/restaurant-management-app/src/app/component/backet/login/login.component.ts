@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../../../services/account.service';
-import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +14,7 @@ export class LoginComponent {
   public message: string = '';
   public formSubmitted: boolean = false;
 
-  constructor(private accountService: AccountService, 
-              private authService: AuthService,
-              private router: Router) {}
+  constructor(private accountService: AccountService, private authService: AuthService, private router: Router) {}
 
   login(): void {
     this.formSubmitted = true;
@@ -26,7 +24,7 @@ export class LoginComponent {
         response => {
           console.log('Login response:', response); // Log để kiểm tra response từ server
           if (response.status === 'success') {
-            this.authService.login(response.role);
+            this.authService.login(response.role, response.userId);
             console.log('Đăng nhập thành công');
             if (response.role === 'Admin') {
               this.router.navigate(['/admin/home']);

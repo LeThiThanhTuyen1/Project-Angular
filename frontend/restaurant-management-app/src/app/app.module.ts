@@ -11,8 +11,6 @@ import { AppComponent } from './app.component';
 import { AccountListComponent } from './component/admin/admin-home/account-list/account-list.component';
 import { DishListComponent } from './component/customer/dish-list/dish-list.component';
 import { DishDetailComponent } from './component/customer/dish-detail/dish-detail.component';
-import { OrderListComponent } from './component/order-list/order-list.component';
-import { OrderDetailComponent } from './component/order-detail/order-detail.component';
 import { CategoryListComponent } from './component/admin/admin-home/category-list/category-list.component';
 import { LoginComponent } from './component/backet/login/login.component';
 import { RegisterComponent } from './component/backet/register/register.component';
@@ -24,9 +22,8 @@ import { ContactComponent } from './component/backet/contact/contact.component';
 //service
 import { AccountService } from './services/account.service';
 import { DishService } from './services/dish.service';
-import { OrderService } from './services/order-detail.service';
-import { OrderDetailService } from './services/order.service';
 import { CategoryService } from './services/category.service';
+import { TableBooking } from './models/table-booking.model';
 //model
 //
 import { withFetch } from '@angular/common/http';
@@ -39,6 +36,8 @@ import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 import { AdminDishesComponent } from './component/admin/admin-home/admin-dishes/admin-dishes.component';
+import { TableBookingService } from './services/table-booking.service';
+import { MyBookingComponent } from './component/customer/my-booking/my-booking.component';
 
 @NgModule({
   declarations: [
@@ -47,8 +46,6 @@ import { AdminDishesComponent } from './component/admin/admin-home/admin-dishes/
     CategoryListComponent,
     DishListComponent,
     DishDetailComponent,
-    OrderListComponent,
-    OrderDetailComponent,
     LoginComponent,
     NavBarComponent,
     RegisterComponent,
@@ -58,6 +55,7 @@ import { AdminDishesComponent } from './component/admin/admin-home/admin-dishes/
     ContactComponent,
     AdminHomeComponent,
     AdminDishesComponent,
+    MyBookingComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,10 +77,9 @@ import { AdminDishesComponent } from './component/admin/admin-home/admin-dishes/
     provideClientHydration(),
     provideHttpClient(withFetch()),
     AccountService,
-    OrderDetailService,
-    OrderService,
     CategoryService,
     DishService, 
+    TableBookingService,
     provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
