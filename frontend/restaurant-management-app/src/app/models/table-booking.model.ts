@@ -1,10 +1,11 @@
 export interface TableBooking {
     BookingID: number;
-    CustomerID: number;
+    AccountID: number | null;
     CustomerName: string;
     NumberOfPeople: number;
+    Phone: string;
     BookingDate: Date;
     BookingTime: string; 
-    Notes: string;
+    Notes: string | null;
   }
   

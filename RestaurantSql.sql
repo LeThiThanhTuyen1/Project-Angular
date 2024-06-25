@@ -62,21 +62,29 @@ INSERT INTO Dishes (Name, Description, Price, ImageURL, CategoryID) VALUES
 
 DROP TABLE IF EXISTS OrderDetails;
 DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS TableBookings;
 GO
 
 CREATE TABLE TableBookings (
     BookingID INT PRIMARY KEY IDENTITY(1,1),
-    CustomerID INT NOT NULL,
+    AccountID INT,
     CustomerName NVARCHAR(100) NOT NULL,
     NumberOfPeople INT NOT NULL,
+	Phone NCHAR(10) NOT NULL,
     BookingDate DATE NOT NULL,
     BookingTime TIME NOT NULL,
     Notes NVARCHAR(255)
 );
 GO
 
-INSERT INTO TableBookings (CustomerID, CustomerName, NumberOfPeople, BookingDate, BookingTime, Notes) VALUES
-(1, 'Nguyễn Văn A', 4, '2024-07-01', '18:30:00', 'Kỷ niệm ngày cưới'),
-(2, 'Trần Thị B', 2, '2024-07-02', '19:00:00', 'Sinh nhật bạn gái'),
-(3, 'Lê Văn C', 5, '2024-07-03', '20:00:00', 'Tiệc công ty'),
+INSERT INTO TableBookings (AccountID, CustomerName, NumberOfPeople, Phone, BookingDate, BookingTime, Notes) VALUES
+(1, N'Nguyễn Văn A', 4, '0343464516' , '2024-07-01', '18:30:00', N'Kỷ niệm ngày cưới'),
+(2, N'Trần Thị B', 2, '0343464516' ,'2024-07-02', '19:00:00', N'Sinh nhật bạn gái'),
+(3, N'Lê Văn C', 5, '0343464516' ,'2024-07-03', '20:00:00', N'Tiệc công ty')
+GO
+
+INSERT INTO TableBookings (AccountID, CustomerName, NumberOfPeople, Phone, BookingDate, BookingTime, Notes) VALUES
+(0, N'Nguyễn Văn A', 4, '0343464516' , '2024-07-01', '18:30:00', N'Kỷ niệm ngày cưới'),
+(0, N'Trần Thị B', 2, '0343464516' ,'2024-07-02', '19:00:00', N'Sinh nhật bạn gái'),
+(0, N'Lê Văn C', 5, '0343464516' ,'2024-07-03', '20:00:00', N'Tiệc công ty')
 GO

@@ -39,6 +39,7 @@ import { AdminDishesComponent } from './component/admin/admin-home/admin-dishes/
 import { TableBookingService } from './services/table-booking.service';
 import { MyBookingComponent } from './component/customer/my-booking/my-booking.component';
 import { TableBookingComponent } from './component/customer/table-booking/table-booking.component';
+import { TableBookingAdminComponent } from './component/admin/admin-home/table-booking-admin/table-booking-admin.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { TableBookingComponent } from './component/customer/table-booking/table-
     AdminDishesComponent,
     MyBookingComponent,
     TableBookingComponent,
+    TableBookingAdminComponent,
   ],
   imports: [
     BrowserModule,

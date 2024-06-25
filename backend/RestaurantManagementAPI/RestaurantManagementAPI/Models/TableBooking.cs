@@ -12,6 +12,7 @@ namespace RestaurantManagementAPI.Models
         public int NumberOfPeople { get; set; }
         public DateTime BookingDate { get; set; }
         public TimeSpan BookingTime { get; set; }
+        public string? Phone { get; set; }
         public string? Notes { get; set; }
     }
 }
