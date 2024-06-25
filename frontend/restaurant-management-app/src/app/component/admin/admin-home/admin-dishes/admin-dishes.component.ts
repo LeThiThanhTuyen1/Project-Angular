@@ -5,6 +5,7 @@ import { Category } from '../../../../models/category.model';
 import { Dish } from '../../../../models/dish.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-dishes',
@@ -16,6 +17,7 @@ export class AdminDishesComponent implements OnInit {
   categories: Category[] = [];
   categoryNames: { [key: number]: string } = {};
   selectedDish: Dish = {} as Dish;
+  newDish: Dish = { DishID: 0, Name: '', Description: '', Price: 0, ImageURL: '', CategoryID: 0 };
 
   constructor(
     private dishService: DishService,
@@ -76,5 +78,55 @@ export class AdminDishesComponent implements OnInit {
 
   closeEditModal(): void {
     document.getElementById('id02')!.style.display = 'none';
+  }
+
+  addDish(form: NgForm) {
+    if (form.valid) {
+      this.newDish.Name = form.value.newName;
+      this.newDish.Description = form.value.newDescription;
+      this.newDish.Price = form.value.newPrice;
+      this.newDish.ImageURL = form.value.newImageURL;
+      this.newDish.CategoryID = form.value.newCategory;
+      this.dishService.createDish(this.newDish).subscribe(
+        dish => {
+          form.resetForm();
+          (document.getElementById('id01')!).style.display = 'none';
+          this.loadDishes();
+          alert('Thêm thành công.');
+        },
+        error => {
+          alert('Món ăn đã tồn tại.');
+          console.error('Failed to add dish:', error);
+        }
+      );
+    }
+  }
+
+  openEditModal(dish: Dish): void {
+    this.setSelectedDish(dish);
+    (document.getElementById('id02')!).style.display = 'block';
+  }
+
+  editDish(form: NgForm): void {
+    if (form.valid) {
+      this.updateDish();
+      form.resetForm();
+      (document.getElementById('id02')!).style.display = 'none';
+    }
+  }
+
+  deleteDish(dishId: number): void {
+    if (confirm('Bạn có chắc chắn muốn xóa món ăn này không?')) {
+      this.dishService.deleteDish(dishId).subscribe(
+        () => {
+          this.loadDishes();
+          alert('Xóa thành công.');
+        },
+        error => {
+          alert('Xóa thất bại.');
+          console.error('Failed to delete dish:', error);
+        }
+      );
+    }
   }
 }
