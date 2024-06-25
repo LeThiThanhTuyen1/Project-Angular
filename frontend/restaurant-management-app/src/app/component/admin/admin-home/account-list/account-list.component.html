@@ -42,16 +42,20 @@
       <!-- Modal Body -->
       <div class="modal-body">
         <form #form="ngForm" (ngSubmit)="addAccount(form)">
+        <form #form="ngForm" (ngSubmit)="addAccount(form)">
           <div class="mb-3">
             <label for="Username" class="form-label">Tên Tài Khoản</label>
+            <input type="text" class="form-control" id="Username" name="Username" [(ngModel)]="newAccount.Username" required>
             <input type="text" class="form-control" id="Username" name="Username" [(ngModel)]="newAccount.Username" required>
           </div>
           <div class="mb-3">
             <label for="Password" class="form-label">Mật khẩu</label>
             <input type="password" class="form-control" id="Password" name="Password" [(ngModel)]="newAccount.Password" required>
+            <input type="password" class="form-control" id="Password" name="Password" [(ngModel)]="newAccount.Password" required>
           </div>
           <div class="mb-3">
             <label for="Role" class="form-label">Vai trò</label>
+            <input type="text" class="form-control" id="Role" name="Role" [(ngModel)]="newAccount.Role" required>
             <input type="text" class="form-control" id="Role" name="Role" [(ngModel)]="newAccount.Role" required>
           </div>
           <div class="mb-3">

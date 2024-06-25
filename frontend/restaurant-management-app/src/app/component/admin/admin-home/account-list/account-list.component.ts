@@ -11,9 +11,9 @@ import { NgForm } from '@angular/forms';
 })
 export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
-  selectedAccount: Account = { AccountID: 0, Username:'', Password:'', Role:'', PhoneNumber:''};
-  newAccount: Account = { AccountID: 0, Username:'', Password:'', Role:'', PhoneNumber:''  };
-
+  selectedAccount: Account = { AccountID: 0, Username: '', Password: '', Role: '', PhoneNumber: ''};
+  newAccount: Account = { AccountID: 0, Username: '', Password: '', Role: '', PhoneNumber: ''};
+  
   constructor(public accountService: AccountService) { }
 
   ngOnInit(): void {
