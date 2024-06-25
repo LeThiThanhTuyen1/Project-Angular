@@ -1,0 +1,11 @@
+/* Add any custom styles for the dish detail view */
+.card {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .card-img-top {
+    max-height: 300px;
+    object-fit: cover;
+  }
+  

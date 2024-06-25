@@ -1,1 +1,17 @@
-<p>dish-detail works!</p>
+<div class="container mt-5" *ngIf="dish">
+    <h1 class="mb-4">{{ dish.Name }}</h1>
+    <img [src]="dish.ImageURL" alt="{{ dish.Name }}" class="img-fluid mb-4">
+    <div class="mb-3">
+      <strong>Description:</strong>
+      <p>{{ dish.Description }}</p>
+    </div>
+    <div class="mb-3">
+      <strong>Price:</strong>
+      <p>{{ dish.Price | currency }}</p>
+    </div>
+    <div class="mb-3">
+      <strong>Category ID:</strong>
+      <p>{{ dish.CategoryID }}</p>
+    </div>
+  </div>
+  
