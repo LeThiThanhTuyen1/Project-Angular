@@ -27,6 +27,9 @@ const routes: Routes = [
   { path: 'admin/dishes', component: AdminDishesComponent},
   { path: 'mybooking', component: MyBookingComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: '/dishes', pathMatch: 'full' },
+  { path: 'dishes', component: DishListComponent },
+  { path: 'dish-detail/:id', component: DishDetailComponent },
 ];
 
 @NgModule({
