@@ -10,8 +10,7 @@ namespace RestaurantManagementAPI.Data
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Dish> Dishes { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<TableBooking> TableBookings { get; set; }
         public DbSet<Contact> Contacts { get; set; }
     }
 }
