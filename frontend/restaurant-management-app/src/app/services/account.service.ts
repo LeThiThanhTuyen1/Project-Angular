@@ -4,12 +4,13 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Account } from '../models/account.model';
 import { Router } from '@angular/router';
-
+import { TableBooking } from '../models/table-booking.model';
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
   private apiUrl = 'http://localhost:5100/api/accounts';
+  private bookingUrl = 'http://localhost:5100/api/tablebooking'; 
   list: Account[] = [];
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -43,17 +44,11 @@ export class AccountService {
         } else if (account.Password !== password) {
           return 'Mật khẩu không khớp';
         } else {
-          return { status: 'success', role: account.Role };
+          return { status: 'success', role: account.Role, userId: account.AccountID }; // Assuming account.Id is userId
         }
       }),
       catchError(this.handleError)
-    );
-  }
-
-  getRoleByUsername(username: string): Observable<string> {
-    return this.http.get<string>(`${this.apiUrl}/role/${username}`).pipe(
-      catchError(this.handleError)
-    );
+    )
   }
 
   register(username: string, password: string, role: string, phoneNumber: string): Observable<any> {
@@ -68,15 +63,6 @@ export class AccountService {
         }
       })
     );
-  }
-
-  logout(): void {
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/dishes']);
-  }
-
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('currentUser');
   }
 
   private handleError(error: HttpErrorResponse) {

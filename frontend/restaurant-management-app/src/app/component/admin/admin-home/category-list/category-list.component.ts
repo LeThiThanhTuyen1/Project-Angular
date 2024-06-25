@@ -11,7 +11,6 @@ import { NgForm } from '@angular/forms';
 export class CategoryListComponent implements OnInit {
   categories: Category[] = [];
   selectedCategory: Category = { CategoryID: 0, Name: '', Description: '' };
-  newCategory: Category = { CategoryID: 0, Name: '', Description: '' };
 
   constructor(private categoryService: CategoryService) {}
 
@@ -33,7 +32,7 @@ export class CategoryListComponent implements OnInit {
 
   addCategory(form: NgForm) {
     if (form.valid) {
-      this.categoryService.createCategory(this.newCategory).subscribe(
+      this.categoryService.createCategory(this.selectedCategory).subscribe(
         category => {
           console.log('Category added:', category);
           form.resetForm();
@@ -73,7 +72,6 @@ export class CategoryListComponent implements OnInit {
         (response) => {
           console.log('Category deleted successfully:', category);
           this.loadCategories(); 
-          alert('Xóa thành công.');
         },
         error => {
           alert('Không thể xóa vì ràng buộc dữ liệu.');
