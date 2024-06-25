@@ -38,6 +38,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { AdminDishesComponent } from './component/admin/admin-home/admin-dishes/admin-dishes.component';
 import { TableBookingService } from './services/table-booking.service';
 import { MyBookingComponent } from './component/customer/my-booking/my-booking.component';
+import { TableBookingComponent } from './component/customer/table-booking/table-booking.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { MyBookingComponent } from './component/customer/my-booking/my-booking.c
     AdminHomeComponent,
     AdminDishesComponent,
     MyBookingComponent,
+    TableBookingComponent,
   ],
   imports: [
     BrowserModule,
