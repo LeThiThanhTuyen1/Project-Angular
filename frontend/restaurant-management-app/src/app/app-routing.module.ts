@@ -14,6 +14,7 @@ import { AdminDishesComponent } from './component/admin/admin-home/admin-dishes/
 import { MyBookingComponent } from './component/customer/my-booking/my-booking.component';
 import { TableBookingComponent } from './component/customer/table-booking/table-booking.component';
 import { AuthGuard } from './guard/auth.guard';
+import { TableBookingAdminComponent } from './component/admin/admin-home/table-booking-admin/table-booking-admin.component';
 
 const routes: Routes = [
   { path: 'accounts', component: AccountListComponent },
@@ -29,7 +30,9 @@ const routes: Routes = [
   { path: 'admin/dishes', component: AdminDishesComponent},
   { path: 'mybooking', component: MyBookingComponent},
   { path: 'table-booking', component: TableBookingComponent, canActivate: [AuthGuard]},
+  { path: 'table-booking-admin', component: TableBookingAdminComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home' } 
 ];
 
 @NgModule({

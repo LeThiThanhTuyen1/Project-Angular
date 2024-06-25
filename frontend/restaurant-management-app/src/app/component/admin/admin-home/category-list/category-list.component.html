@@ -40,11 +40,11 @@
         <form #form="ngForm" (ngSubmit)="addCategory(form)">
           <div class="mb-3">
             <label for="Name" class="form-label">Tên Danh Mục</label>
-            <input type="text" class="form-control" id="Name" name="Name" [(ngModel)]="newCategory.Name" required>
+            <input type="text" class="form-control" id="Name" name="Name" [(ngModel)]="selectedCategory.Name" required>
           </div>
           <div class="mb-3">
             <label for="Description" class="form-label">Mô tả</label>
-            <textarea class="form-control" id="Description" name="Description" [(ngModel)]="newCategory.Description" rows="3" required></textarea>
+            <textarea class="form-control" id="Description" name="Description" [(ngModel)]="selectedCategory.Description" rows="3" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Lưu</button>
         </form>
