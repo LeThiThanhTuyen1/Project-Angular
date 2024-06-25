@@ -8373,23 +8373,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\FPT\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
+      "projectUniqueName": "D:\\Dotnet\\BCCK\\Project-Angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
       "projectName": "RestaurantManagementAPI",
-      "projectPath": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
-      "packagesPath": "C:\\Users\\FPT\\.nuget\\packages\\",
-      "outputPath": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\obj\\",
+      "projectPath": "D:\\Dotnet\\BCCK\\Project-Angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\Dotnet\\BCCK\\Project-Angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\FPT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

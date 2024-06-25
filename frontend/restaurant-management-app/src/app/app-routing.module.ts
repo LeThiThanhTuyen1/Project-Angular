@@ -32,6 +32,9 @@ const routes: Routes = [
   { path: 'table-booking', component: TableBookingComponent, canActivate: [AuthGuard]},
   { path: 'table-booking-admin', component: TableBookingAdminComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: '/dishes', pathMatch: 'full' },
+  { path: 'dishes', component: DishListComponent },
+  { path: 'dish-detail/:id', component: DishDetailComponent },
   { path: '**', redirectTo: '/home' } 
 ];
 

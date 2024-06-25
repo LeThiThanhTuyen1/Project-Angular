@@ -1,0 +1,23 @@
+/* CSS tùy chỉnh cho form */
+.form-group {
+    margin-bottom: 20px; /* Khoảng cách giữa các nhóm input */
+  }
+  
+  .form-control {
+    width: 100%; /* Chiều rộng 100% */
+    padding: 10px; /* Đệm bên trong input */
+  }
+  
+  .btn-primary {
+    margin-top: 20px; /* Khoảng cách giữa nút và các input */
+  }
+  
+  /* Để đảm bảo các ô nhập liệu có chiều cao như nhau */
+  input[type="text"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"] {
+    height: 60px; /* Chiều cao mong muốn */
+  }
+  
