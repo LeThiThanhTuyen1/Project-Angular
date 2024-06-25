@@ -58,4 +58,7 @@
     text-decoration: none;
     cursor: pointer;
   }
-  
+.img {
+  width: 50px!important;
+  height: 50px!important;
+}
