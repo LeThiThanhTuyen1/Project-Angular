@@ -33,11 +33,14 @@
           <li class="nav-item" *ngIf="role !== 'Admin'">
             <a class="nav-link" href="home" routerLink="home">Trang chủ</a>
           </li>
-          <li class="nav-item" *ngIf="role == 'Customer'">
-            <a class="nav-link" href="mybooking" routerLink="mybooking">Danh sách đặt</a>
-          </li>
           <li class="nav-item" *ngIf="role !== 'Admin'">
             <a class="nav-link" href="dishes" routerLink="dishes">Thực đơn</a>
+          </li>
+          <li class="nav-item" *ngIf="role !== 'Admin'">
+            <a class="nav-link" href="table-booking" routerLink="table-booking">Đặt bàn</a>
+          </li>
+          <li class="nav-item" *ngIf="role == 'Customer'">
+            <a class="nav-link" href="mybooking" routerLink="mybooking">Danh sách đặt</a>
           </li>
           <li class="nav-item" *ngIf="role !== 'Admin'">
             <a class="nav-link" href="about-us" routerLink="about-us">Giới thiệu</a>

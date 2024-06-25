@@ -12,6 +12,8 @@ import { HomeComponent } from './component/customer/home/home.component';
 import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 import { AdminDishesComponent } from './component/admin/admin-home/admin-dishes/admin-dishes.component';
 import { MyBookingComponent } from './component/customer/my-booking/my-booking.component';
+import { TableBookingComponent } from './component/customer/table-booking/table-booking.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: 'accounts', component: AccountListComponent },
@@ -22,10 +24,11 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'home', component: HomeComponent},
   { path: 'about-us', component: AboutUsComponent},
-  { path: 'admin/home', component: AdminHomeComponent},
+  { path: 'admin/home', component: AdminHomeComponent, canActivate: [AuthGuard]},
   { path: 'contact', component: ContactComponent},
   { path: 'admin/dishes', component: AdminDishesComponent},
   { path: 'mybooking', component: MyBookingComponent},
+  { path: 'table-booking', component: TableBookingComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
