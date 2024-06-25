@@ -1,2 +1,36 @@
-<p>table-booking works!</p>
- 
+<!-- table-booking.component.html -->
+
+<form >
+    
+    <div class="form-group">
+      <label for="customerName">Tên khách hàng:</label>
+      <input type="text" id="customerName" name="customerName" class="form-control"  required>
+    </div>
+  
+    <div class="form-group">
+      <label for="phoneNumber">Số điện thoại:</label>
+      <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control"  required>
+    </div>
+  
+    <div class="form-group">
+      <label for="numberOfPeople">Số người:</label>
+      <input type="number" id="numberOfPeople" name="numberOfPeople" class="form-control"  required>
+    </div>
+  
+    <div class="form-group">
+      <label for="bookingDate">Ngày đặt:</label>
+      <input type="date" id="bookingDate" name="bookingDate" class="form-control"  required>
+    </div>
+  
+    <div class="form-group">
+      <label for="bookingTime">Thời gian đặt:</label>
+      <input type="time" id="bookingTime" name="bookingTime" class="form-control"  required>
+    </div>
+    <div class="form-group">
+        <label for="note">Ghi chú:</label>
+        <input type="text" id="note" name="note" class="form-control form-control-lg" required>
+      </div>
+      
+    <button type="submit" class="btn btn-primary">Đặt</button>
+   
+  </form>
