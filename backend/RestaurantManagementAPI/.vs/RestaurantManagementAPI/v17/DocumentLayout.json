@@ -80,7 +80,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 286,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -103,6 +103,10 @@
               "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "TableBookingsController.cs",
@@ -110,7 +114,7 @@
               "RelativeDocumentMoniker": "RestaurantManagementAPI\\Controllers\\TableBookingsController.cs",
               "ToolTip": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\Controllers\\TableBookingsController.cs",
               "RelativeToolTip": "RestaurantManagementAPI\\Controllers\\TableBookingsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAABwAAAAAAAAAAAAQwBUAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-24T14:18:47.091Z",
               "EditorCaption": ""
@@ -125,8 +129,7 @@
               "RelativeToolTip": "RestaurantManagementAPI\\Models\\TableBooking.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-24T13:55:26.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-24T13:55:26.673Z"
             },
             {
               "$type": "Document",
@@ -138,8 +141,7 @@
               "RelativeToolTip": "RestaurantManagementAPI\\Controllers\\DishesController.cs",
               "ViewState": "AQIAAFUAAAAAAAAAAAAgwDAAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T04:40:19.603Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T04:40:19.603Z"
             },
             {
               "$type": "Document",
@@ -151,8 +153,7 @@
               "RelativeToolTip": "RestaurantManagementAPI\\Models\\Account.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T07:10:02.664Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T07:10:02.664Z"
             },
             {
               "$type": "Document",
@@ -164,8 +165,7 @@
               "RelativeToolTip": "RestaurantManagementAPI\\Data\\RestaurantContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T07:12:57.512Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T07:12:57.512Z"
             },
             {
               "$type": "Document",
@@ -177,8 +177,7 @@
               "RelativeToolTip": "RestaurantManagementAPI\\Models\\Contact.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T08:08:10.12Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T08:08:10.12Z"
             },
             {
               "$type": "Document",
@@ -190,8 +189,7 @@
               "RelativeToolTip": "RestaurantManagementAPI\\Models\\Dish.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T07:09:33.126Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T07:09:33.126Z"
             },
             {
               "$type": "Document",
@@ -203,8 +201,7 @@
               "RelativeToolTip": "RestaurantManagementAPI\\Models\\Category.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T08:30:11.629Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T08:30:11.629Z"
             },
             {
               "$type": "Document",
@@ -301,10 +298,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-31T10:31:18.748Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",

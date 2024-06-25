@@ -6,6 +6,7 @@
           <th>ID Đặt bàn</th>
           <th>Tên người đặt</th>
           <th>Số người</th>
+          <th>Số điện thoại</th>
           <th>Đặt ngày</th>
           <th>Thời gian đặt</th>
           <th style="width: 140px;">Thao tác</th>
@@ -16,7 +17,8 @@
           <td>{{ booking.BookingID }}</td>
           <td>{{ booking.CustomerName }}</td>
           <td>{{ booking.NumberOfPeople }}</td>
-          <td>{{ booking.BookingDate }}</td>
+          <td>{{ booking.Phone }}</td>
+          <td>{{ booking.BookingDate | date:'dd/MM/yyyy'}}</td>
           <td>{{ booking.BookingTime }}</td>
           <td>
             <button class="btn btn-danger">Hủy Đặt bàn</button>
