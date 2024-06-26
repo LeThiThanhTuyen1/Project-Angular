@@ -9,7 +9,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 import { AppComponent } from './app.component';
 import { AccountListComponent } from './component/admin/admin-home/account-list/account-list.component';
-import { DishListComponent } from './component/customer/dish-list/dish-list.component';
 import { DishDetailComponent } from './component/customer/dish-detail/dish-detail.component';
 import { CategoryListComponent } from './component/admin/admin-home/category-list/category-list.component';
 import { LoginComponent } from './component/backet/login/login.component';
@@ -23,7 +22,6 @@ import { ContactComponent } from './component/backet/contact/contact.component';
 import { AccountService } from './services/account.service';
 import { DishService } from './services/dish.service';
 import { CategoryService } from './services/category.service';
-import { TableBooking } from './models/table-booking.model';
 //model
 //
 import { withFetch } from '@angular/common/http';
@@ -40,15 +38,19 @@ import { TableBookingService } from './services/table-booking.service';
 import { MyBookingComponent } from './component/customer/my-booking/my-booking.component';
 import { TableBookingComponent } from './component/customer/table-booking/table-booking.component';
 import { TableBookingAdminComponent } from './component/admin/admin-home/table-booking-admin/table-booking-admin.component';
+import { CartComponent } from './component/cart/cart.component';
+import { DishListComponent } from './component/customer/dish-list/dish-list.component';
+import { OrderService } from './services/order.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountListComponent,
     CategoryListComponent,
-    DishListComponent,
     DishDetailComponent,
     LoginComponent,
+    DishListComponent,
     NavBarComponent,
     RegisterComponent,
     FooterBarComponent,
@@ -60,6 +62,7 @@ import { TableBookingAdminComponent } from './component/admin/admin-home/table-b
     MyBookingComponent,
     TableBookingComponent,
     TableBookingAdminComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +87,8 @@ import { TableBookingAdminComponent } from './component/admin/admin-home/table-b
     CategoryService,
     DishService, 
     TableBookingService,
+    OrderService,
+    AuthService,
     provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]

@@ -45,6 +45,9 @@
           <li class="nav-item" *ngIf="role === 'Customer'">
             <a class="nav-link" routerLink="/mybooking">Danh sách đặt</a>
           </li>
+          <li class="nav-item" *ngIf="role === 'Customer'">
+            <a class="nav-link" routerLink="/mycart">Giỏ hàng</a>
+          </li>
           <li class="nav-item" *ngIf="role !== 'Admin'">
             <a class="nav-link" routerLink="/about-us">Giới thiệu</a>
           </li>

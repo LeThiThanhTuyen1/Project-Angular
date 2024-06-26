@@ -24,8 +24,9 @@
             </div>
             <h3 class="types_text">{{ dish.Name }}</h3>
             <p class="looking_text">{{ dish.Price }} VNĐ</p>
-            <div style="width: 300px;" class="read_bt">
-              <a [routerLink]="['/dish-detail', dish.DishID]">Xem thêm</a>
+            <div style="width: 300px; margin-left: 2px;" class="read_bt">
+              <a class="bt" (click)="addToCart(dish.DishID)">Thêm vào giỏ hàng</a>
+              <a class="bt-1" [routerLink]="['/dish-detail', dish.DishID]">Xem</a>
             </div>
             <br>
           </div>
