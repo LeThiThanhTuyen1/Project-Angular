@@ -1,33 +1,27 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Order } from '../models/order.model';
+import { Injectable } from '@angular/core';
+import { OrderDetail } from '../models/order-detail.model';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService {
-  private apiUrl = 'https://localhost:7248/api/orders';
+export class OrderDetailService {
 
+  private apiUrl = 'http://localhost:5100/api/OrderDetails';
+  
   constructor(private http: HttpClient) { }
 
-  getAllOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.apiUrl);
-  }
+  addOrderDetail(orderDetail: OrderDetail): Observable<OrderDetail> {
+    console.log('Sending order detail:', orderDetail);
 
-  getOrderById(id: number): Observable<Order> {
-    return this.http.get<Order>(`${this.apiUrl}/${id}`);
-  }
-
-  createOrder(order: Order): Observable<Order> {
-    return this.http.post<Order>(this.apiUrl, order);
-  }
-
-  updateOrder(id: number, order: Order): Observable<Order> {
-    return this.http.put<Order>(`${this.apiUrl}/${id}`, order);
-  }
-
-  deleteOrder(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.post<OrderDetail>(`${this.apiUrl}`, orderDetail)
+      .pipe(
+        catchError(error => {
+          console.error('Error adding order detail:', error);
+          return throwError(error);
+        })
+      );
   }
 }

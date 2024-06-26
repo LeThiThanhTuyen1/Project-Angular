@@ -1,33 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Order } from '../models/order.model';
 import { OrderDetail } from '../models/order-detail.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OrderDetailService {
-  private apiUrl = 'https://localhost:7248/api/orderdetails';
+export class OrderService {
+  private apiUrl = 'http://localhost:5100/api/orders';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getAllOrderDetails(): Observable<OrderDetail[]> {
-    return this.http.get<OrderDetail[]>(this.apiUrl);
+  addOrder(order: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post<any>(`${this.apiUrl}`, order, { headers });
   }
 
-  getOrderDetailById(id: number): Observable<OrderDetail> {
-    return this.http.get<OrderDetail>(`${this.apiUrl}/${id}`);
-  }
-
-  createOrderDetail(orderDetail: OrderDetail): Observable<OrderDetail> {
-    return this.http.post<OrderDetail>(this.apiUrl, orderDetail);
-  }
-
-  updateOrderDetail(id: number, orderDetail: OrderDetail): Observable<OrderDetail> {
-    return this.http.put<OrderDetail>(`${this.apiUrl}/${id}`, orderDetail);
-  }
-
-  deleteOrderDetail(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  getOrderByUserIdAndStatus(userId: number, status: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}?userId=${userId}&status=${status}`);
   }
 }

@@ -1,4 +1,6 @@
-﻿namespace RestaurantManagementAPI.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace RestaurantManagementAPI.Models
 {
     public class Account
     {
