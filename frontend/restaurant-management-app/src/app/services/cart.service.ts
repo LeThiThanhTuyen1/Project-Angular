@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Dish } from '../models/dish.model';
 import { Cart } from '../models/cart.model';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,20 +11,25 @@ import { Cart } from '../models/cart.model';
 export class CartService {
   private items: Cart[] = [];
   private itemsSubject = new BehaviorSubject<Cart[]>(this.items);
+  
+  private apiUrl = 'http://localhost:5100/api/Carts';
 
-  addToCart(dish: Dish, iduser: number) {
-    const existingItem = this.items.find(item => item.DishID === dish.DishID);
-    if (existingItem) {
-      existingItem.Quantity++;
-    } else {
-      this.items.push({
-        DishID: dish.DishID,
-        AccountID: iduser,
-        Price: dish.Price,
-        Quantity: 1,
-      });
-    }
-    this.itemsSubject.next(this.items);
+  constructor(private http: HttpClient) {}
+
+  addToCart(cartData: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+  
+    return this.http.post<any>(this.apiUrl, cartData, { headers });
+  }  
+
+  getTableBookingsByAccountId(accountId: number): Observable<Cart[]> {
+    return this.http.get<Cart[]>(`${this.apiUrl}/byaccount/${accountId}`);
+  }
+
+  getCartsByAccountId(accountId: number): Observable<Cart[]> {
+    return this.http.get<Cart[]>(`${this.apiUrl}/byaccount/${accountId}`);
   }
 
   getItems() {

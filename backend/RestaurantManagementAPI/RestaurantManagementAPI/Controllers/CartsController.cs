@@ -14,9 +14,9 @@ namespace RestaurantManagementAPI.Controllers
     [ApiController]
     public class CartsController : ControllerBase
     {
-        private readonly RestaurantManagementAPIContext _context;
+        private readonly RestaurantContext _context;
 
-        public CartsController(RestaurantManagementAPIContext context)
+        public CartsController(RestaurantContext context)
         {
             _context = context;
         }
@@ -25,14 +25,14 @@ namespace RestaurantManagementAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cart>>> GetCart()
         {
-            return await _context.Cart.ToListAsync();
+            return await _context.Carts.ToListAsync();
         }
 
         // GET: api/Carts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Cart>> GetCart(int id)
         {
-            var cart = await _context.Cart.FindAsync(id);
+            var cart = await _context.Carts.FindAsync(id);
 
             if (cart == null)
             {
@@ -73,28 +73,35 @@ namespace RestaurantManagementAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Carts
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Cart>> PostCart(Cart cart)
         {
-            _context.Cart.Add(cart);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Lấy ID người dùng từ đối tượng Cart truyền vào từ frontend
+            int userId = cart.AccountID; // Giả sử AccountID là trường chứa ID người dùng trong Cart
+
+            // Thêm đối tượng Cart vào DbContext và lưu vào cơ sở dữ liệu
+            _context.Carts.Add(cart);
             await _context.SaveChangesAsync();
 
+            // Trả về đối tượng Cart đã được tạo thành công
             return CreatedAtAction("GetCart", new { id = cart.CartID }, cart);
-        }
-
+}
         // DELETE: api/Carts/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCart(int id)
         {
-            var cart = await _context.Cart.FindAsync(id);
+            var cart = await _context.Carts.FindAsync(id);
             if (cart == null)
             {
                 return NotFound();
             }
 
-            _context.Cart.Remove(cart);
+            _context.Carts.Remove(cart);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -103,7 +110,7 @@ namespace RestaurantManagementAPI.Controllers
         [HttpGet("byaccount/{accountId}")]
         public async Task<ActionResult<IEnumerable<Cart>>> GetTableBookingsByAccountId(int accountId)
         {
-            var carts = await _context.Cart
+            var carts = await _context.Carts
                 .Where(tb => tb.AccountID == accountId)
                 .ToListAsync();
 
@@ -117,7 +124,7 @@ namespace RestaurantManagementAPI.Controllers
 
         private bool CartExists(int id)
         {
-            return _context.Cart.Any(e => e.CartID == id);
+            return _context.Carts.Any(e => e.CartID == id);
         }
     }
 }

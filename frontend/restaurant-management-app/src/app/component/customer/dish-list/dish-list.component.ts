@@ -65,8 +65,23 @@ export class DishListComponent implements OnInit {
     if (userId) {
       const dish = this.allDishes.find(d => d.DishID === dishId);
       if (dish) {
-        this.cartService.addToCart(dish, userId);
-        alert('Thêm vào giỏ hàng thành công.');
+        const cartData = {
+          dishID: dish.DishID,
+          accountID: userId,
+          price: dish.Price, // Đảm bảo trường price tồn tại trong dish
+          quantity: 1 // Giả sử số lượng là 1 khi thêm vào giỏ hàng
+        };
+  
+        this.cartService.addToCart(cartData)
+          .subscribe(
+            () => {
+              alert('Thêm vào giỏ hàng thành công.');
+            },
+            (error) => {
+              console.error('Lỗi khi thêm vào giỏ hàng:', error);
+              alert('Đã xảy ra lỗi khi thêm vào giỏ hàng.');
+            }
+          );
       } else {
         alert('Món ăn không tồn tại.');
       }
@@ -75,7 +90,14 @@ export class DishListComponent implements OnInit {
       this.authService.logout();
     }
   }
-
+     
+  
+  addOrderDetail(orderId: number, dishId: number) {
+    // Example function to add order details using the orderId and dishId
+    console.log(`Adding order detail for OrderID ${orderId} and DishID ${dishId}`);
+    // Implement your logic to add order details here
+  }   
+  
   getAllDishes(): void {
     this.dishService.getAllDishes().subscribe(
       data => {

@@ -3,6 +3,7 @@ import { CartService } from '../../services/cart.service';
 import { DishService } from '../../services/dish.service';
 import { Cart } from '../../models/cart.model';
 import { AuthService } from '../../services/auth.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +18,8 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private dishService: DishService,
-    private authService: AuthService
+    private authService: AuthService,
+    private cdRef: ChangeDetectorRef // Inject ChangeDetectorRef
   ){}
 
   ngOnInit(): void {
@@ -50,10 +52,11 @@ export class CartComponent implements OnInit {
     this.dishService.getDishNameById(dishId).subscribe(
       name => {
         this.dishNames[dishId] = name;
-        console.log(this.dishNames[dishId]);
+        console.log(`Dish name for ID ${dishId}: ${name}`);
+        this.cdRef.detectChanges(); // Thông báo Angular cập nhật view
       },
       error => {
-        console.error('Error fetching dish name:', error);
+        console.error(`Error fetching dish name for ID ${dishId}:`, error);
       }
     );
   }

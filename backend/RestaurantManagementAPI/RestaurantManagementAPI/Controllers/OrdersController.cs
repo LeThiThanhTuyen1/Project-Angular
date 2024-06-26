@@ -13,7 +13,7 @@ namespace RestaurantManagementAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
-    {   
+    {
         private readonly RestaurantContext _context;
 
         public OrdersController(RestaurantContext context)
@@ -21,7 +21,7 @@ namespace RestaurantManagementAPI.Controllers
             _context = context;
         }
 
-            [HttpPost("add")]
+        [HttpPost("add")]
         public IActionResult AddToOrder([FromBody] Order order)
         {
             if (order == null || order.AccountID == 0)
@@ -48,7 +48,7 @@ namespace RestaurantManagementAPI.Controllers
 
             return Ok(existingOrder);
         }
-        
+
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
