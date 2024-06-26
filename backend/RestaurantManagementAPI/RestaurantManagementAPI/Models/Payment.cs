@@ -8,6 +8,5 @@ namespace RestaurantManagementAPI.Models
         public decimal Amount { get; set; }
         public string PaymentMethod { get; set; } // Phương thức thanh toán (Cash, Credit Card, etc.)
 
-        public Order Order { get; set; } // Thông tin đơn hàng
     }
 }
