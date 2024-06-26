@@ -1,15 +1,15 @@
 <div style="margin-bottom: 70px;" class="container mt-5">
-  <h1 class="mb-4">Danh sách Món ăn</h1>
-  <button class="btn btn-primary mb-3" onclick="document.getElementById('id01').style.display='block'">Thêm Món ăn</button>
+  <h1 class="mb-4">Danh sách Món Ăn</h1>
+  <button class="btn btn-primary mb-3" onclick="document.getElementById('id04').style.display='block'">Thêm Món Ăn</button>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>ID</th>
-        <th>Tên Món ăn</th>
-        <th>Mô Tả</th>
+        <th>Tên món ăn</th>
+        <th>Mô tả</th>
         <th>Giá</th>
-        <th>URL Hình ảnh</th>
-        <th>Danh Mục</th>
+        <th>Ảnh</th>
+        <th>ID danh mục</th>
         <th style="width: 140px;">Thao tác</th>
       </tr>
     </thead>
@@ -19,97 +19,93 @@
         <td>{{ dish.Name }}</td>
         <td>{{ dish.Description }}</td>
         <td>{{ dish.Price }}</td>
-        <td><img class="img" src="{{ dish.ImageURL }}" alt="Dish Image" ></td>
-        <td>{{ categoryNames[dish.CategoryID] }}</td>
+        <td><img src="{{dish.ImageURL}}" class="=img"> </td>
+        <td>{{ dish.CategoryID }}</td>
         <td>
-          <button class="btn btn-warning mr-2" (click)="setSelectedDish(dish)">Sửa</button>
-          <button class="btn btn-danger">Xóa</button>
+          <button class="btn btn-warning mr-2" (click)="openEditModal(dish)">Sửa</button>
+          <button class="btn btn-danger" (click)="deleteDish(dish)">Xóa</button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<!-- Add Modal -->
-<div id="id01" class="modal">
+<!-- Add Dish Modal -->
+<div id="id04" class="modal">
   <div class="modal-dialog">
     <div class="modal-content">
       <!-- Modal Header -->
       <div class="modal-header">
-        <h5 class="modal-title">Thêm Món ăn Mới</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id01').style.display='none'">
+        <h5 class="modal-title">Thêm Món Ăn Mới</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id04').style.display='none'">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <!-- Modal Body -->
       <div class="modal-body">
-        <form>
+        <form #form="ngForm" (ngSubmit)="addDish(form)">
           <div class="mb-3">
-            <label for="newName" class="form-label">Tên Món ăn</label>
-            <input type="text" class="form-control" id="newName" name="newName" required>
+            <label for="Name" class="form-label">Tên Món Ăn</label>
+            <input type="text" class="form-control" id="Name" name="Name" [(ngModel)]="newDish.Name" required>
           </div>
           <div class="mb-3">
-            <label for="newDescription" class="form-label">Mô tả</label>
-            <textarea class="form-control" id="newDescription" name="newDescription" rows="3" required></textarea>
+            <label for="Description" class="form-label">Mô tả</label>
+            <textarea class="form-control" id="Description" name="Description" [(ngModel)]="newDish.Description" rows="3" required></textarea>
           </div>
           <div class="mb-3">
-            <label for="newPrice" class="form-label">Giá</label>
-            <input type="number" class="form-control" id="newPrice" name="newPrice" required>
+            <label for="Price" class="form-label">Giá</label>
+            <input type="number" class="form-control" id="Price" name="Price" [(ngModel)]="newDish.Price" required>
           </div>
           <div class="mb-3">
-            <label for="newImageURL" class="form-label">URL Hình ảnh</label>
-            <input type="text" class="form-control" id="newImageURL" name="newImageURL" required>
+            <label for="ImageURL" class="form-label">URL Ảnh</label>
+            <input type="text" class="form-control" id="ImageURL" name="ImageURL" [(ngModel)]="newDish.ImageURL" required>
           </div>
           <div class="mb-3">
-            <label for="newCategory" class="form-label">Danh Mục</label>
-            <select class="form-control" id="newCategory" name="newCategory" required>
-              <option *ngFor="let category of categories" [value]="category.CategoryID">{{ category.Name }}</option>
-            </select>
+            <label for="CategoryID" class="form-label">ID Danh mục</label>
+            <input type="number" class="form-control" id="CategoryID" name="CategoryID" [(ngModel)]="newDish.CategoryID" required>
           </div>
-          <button style="margin-top: 20px;" type="submit" class="btn btn-primary">Thêm</button>
+          <button type="submit" class="btn btn-primary">Lưu</button>
         </form>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Edit Modal -->
-<div id="id02" class="modal">
+<!-- Edit Dish Modal -->
+<div id="id03" class="modal">
   <div class="modal-dialog">
     <div class="modal-content">
       <!-- Modal Header -->
       <div class="modal-header">
-        <h5 class="modal-title">Sửa Món ăn</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id02').style.display='none'">
+        <h5 class="modal-title">Sửa Món Ăn</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id03').style.display='none'">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <!-- Modal Body -->
       <div class="modal-body">
-        <form (ngSubmit)="updateDish()">
+        <form #editForm="ngForm" (ngSubmit)="editDish(editForm)">
           <div class="mb-3">
-            <label for="editName" class="form-label">Tên Món ăn</label>
-            <input type="text" class="form-control" id="editName" name="editName" [(ngModel)]="selectedDish.Name" required>
+            <label for="Name" class="form-label">Tên Món Ăn</label>
+            <input type="text" class="form-control" id="Name" name="Name" [(ngModel)]="selectedDish.Name" required>
           </div>
           <div class="mb-3">
-            <label for="editDescription" class="form-label">Mô tả</label>
-            <textarea class="form-control" id="editDescription" name="editDescription" rows="3" [(ngModel)]="selectedDish.Description" required></textarea>
+            <label for="Description" class="form-label">Mô tả</label>
+            <textarea class="form-control" id="Description" name="Description" [(ngModel)]="selectedDish.Description" rows="3" required></textarea>
           </div>
           <div class="mb-3">
-            <label for="editPrice" class="form-label">Giá</label>
-            <input type="number" class="form-control" id="editPrice" name="editPrice" [(ngModel)]="selectedDish.Price" required>
+            <label for="Price" class="form-label">Giá</label>
+            <input type="number" class="form-control" id="Price" name="Price" [(ngModel)]="selectedDish.Price" required>
           </div>
           <div class="mb-3">
-            <label for="editImageURL" class="form-label">URL Hình ảnh</label>
-            <input type="text" class="form-control" id="editImageURL" name="editImageURL" [(ngModel)]="selectedDish.ImageURL" required>
+            <label for="ImageURL" class="form-label">URL Ảnh</label>
+            <input type="text" class="form-control" id="ImageURL" name="ImageURL" [(ngModel)]="selectedDish.ImageURL" required>
           </div>
           <div class="mb-3">
-            <label for="editCategory" class="form-label">Danh Mục</label>
-            <select class="form-control" id="editCategory" name="editCategory" [(ngModel)]="selectedDish.CategoryID" required>
-              <option *ngFor="let category of categories" [value]="category.CategoryID">{{ category.Name }}</option>
-            </select>
+            <label for="CategoryID" class="form-label">ID Danh mục</label>
+            <input type="number" class="form-control" id="CategoryID" name="CategoryID" [(ngModel)]="selectedDish.CategoryID" required>
           </div>
-          <button style="margin-top: 20px;" type="submit" class="btn btn-warning mr-2">Lưu</button>
+          <button type="submit" class="btn btn-warning mr-2">Lưu</button>
         </form>
       </div>
     </div>

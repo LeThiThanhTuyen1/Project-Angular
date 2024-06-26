@@ -21,3 +21,9 @@
   .category-item.selected {
     color: #ff5733; /* Màu chữ khi được chọn */
   }
+  .bt {
+    margin-right: 10px;
+  }
+  .bt-1 {
+    width: 100px;
+  }

@@ -15,6 +15,7 @@ import { MyBookingComponent } from './component/customer/my-booking/my-booking.c
 import { TableBookingComponent } from './component/customer/table-booking/table-booking.component';
 import { AuthGuard } from './guard/auth.guard';
 import { TableBookingAdminComponent } from './component/admin/admin-home/table-booking-admin/table-booking-admin.component';
+import { CartComponent } from './component/cart/cart.component';
 
 const routes: Routes = [
   { path: 'accounts', component: AccountListComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/dishes', pathMatch: 'full' },
   { path: 'dishes', component: DishListComponent },
   { path: 'dish-detail/:id', component: DishDetailComponent },
+  { path: 'mycart', component: CartComponent},
   { path: '**', redirectTo: '/home' } 
 ];
 

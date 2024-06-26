@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dotnet\\BCCK\\Project-Angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj": {}
+    "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj": {}
   },
   "projects": {
-    "D:\\Dotnet\\BCCK\\Project-Angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj": {
+    "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dotnet\\BCCK\\Project-Angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
+        "projectUniqueName": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
         "projectName": "RestaurantManagementAPI",
-        "projectPath": "D:\\Dotnet\\BCCK\\Project-Angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Dotnet\\BCCK\\Project-Angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\obj\\",
+        "projectPath": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
+        "packagesPath": "C:\\Users\\FPT\\.nuget\\packages\\",
+        "outputPath": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\FPT\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -5,6 +5,7 @@ import { Category } from '../../../../models/category.model';
 import { Dish } from '../../../../models/dish.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-dishes',
@@ -13,70 +14,80 @@ import { map } from 'rxjs/operators';
 })
 export class AdminDishesComponent implements OnInit {
   dishes: Dish[] = [];
-  categories: Category[] = [];
-  categoryNames: { [key: number]: string } = {};
-  selectedDish: Dish = {} as Dish;
+  selectedDish: Dish = { DishID: 0, Name: '', Description: '', Price: 0, ImageURL: '', CategoryID: 0 };
+  newDish: Dish = { DishID: 0, Name: '', Description: '', Price: 0, ImageURL: '', CategoryID: 0 };
 
-  constructor(
-    private dishService: DishService,
-    private categoryService: CategoryService
-  ) {}
+  constructor(private dishService: DishService) { }
 
   ngOnInit(): void {
-    this.loadCategories().subscribe(() => {
-      this.loadDishes();
-    });
+    this.loadDishes();
   }
 
-  private loadDishes(): void {
-    this.dishService.getAllDishes().subscribe((data: Dish[]) => {
-      this.dishes = data;
-      this.loadCategoryNames();
-    });
-  }
-
-  private loadCategories(): Observable<void> {
-    return this.categoryService.getAllCategories().pipe(
-      map((data: Category[]) => {
-        this.categories = data;
-        this.categories.forEach(category => {
-          this.categoryNames[category.CategoryID] = category.Name;
-        });
-        console.log('Categories loaded:', this.categories); // Debugging log
-      })
-    );
-  }
-
-  private loadCategoryNames(): void {
-    this.dishes.forEach(dish => {
-      if (!this.categoryNames[dish.CategoryID]) {
-        this.categoryService.getCategoryNameById(dish.CategoryID).subscribe(name => {
-          this.categoryNames[dish.CategoryID] = name;
-        });
+  loadDishes(): void {
+    this.dishService.getAllDishes().subscribe({
+      next: (data: Dish[]) => {
+        this.dishes = data;
+        console.log('Dishes loaded:', this.dishes);
+      },
+      error: (err) => {
+        console.error('Failed to load dishes:', err);
       }
     });
   }
 
-  setSelectedDish(dish: Dish): void {
-    this.selectedDish = { ...dish };
-    console.log('Selected Dish:', this.selectedDish); // Debugging log
-    if (this.categories.length > 0) {
-      document.getElementById('id02')!.style.display = 'block';
-    } else {
-      this.loadCategories().subscribe(() => {
-        document.getElementById('id02')!.style.display = 'block';
-      });
+  openEditModal(dish: Dish): void {
+    this.selectedDish = { ...dish }; // Make a copy of the dish object
+    document.getElementById('id03')!.style.display = 'block';
+  }
+
+  addDish(form: NgForm): void {
+    if (form.valid) {
+      this.dishService.createDish(this.newDish).subscribe(
+        dish => {
+          console.log('Dish added:', dish);
+          form.resetForm();
+          document.getElementById('id04')!.style.display = 'none'; // Close modal after successful addition
+          this.loadDishes();
+          alert('Thêm thành công.');
+        },
+        error => {
+          alert('Mã danh mục không hợp lệ.'); // Display an alert to the user on error
+          console.error('Failed to add dish:', error);
+        }
+      );
     }
   }
 
-  updateDish(): void {
-    this.dishService.updateDish(this.selectedDish.DishID, this.selectedDish).subscribe(updatedDish => {
-      this.loadDishes();
-      this.closeEditModal();
-    });
+  editDish(form: NgForm): void {
+    if (form.valid) {
+      this.dishService.updateDish(this.selectedDish.DishID, this.selectedDish).subscribe(
+        updatedDish => {
+          console.log('Dish updated:', updatedDish);
+          document.getElementById('id03')!.style.display = 'none'; // Close modal after successful update
+          alert('Sửa thành công.');
+          this.loadDishes();
+        },
+        error => {
+          console.error('Failed to update dish:', error);
+        }
+      );
+    }
   }
 
-  closeEditModal(): void {
-    document.getElementById('id02')!.style.display = 'none';
+  deleteDish(dish: Dish): void {
+    const confirmed = window.confirm(`Bạn có chắc chắn muốn xóa '${dish.Name}' không?`);
+    if (confirmed) {
+      this.dishService.deleteDish(dish.DishID).subscribe(
+        () => {
+          console.log('Dish deleted successfully:', dish);
+          this.loadDishes();
+          alert('Xóa thành công.');
+        },
+        error => {
+          alert('Không thể xóa món ăn do ràng buộc dữ liệu.');
+          console.error('Failed to delete dish:', error);
+        }
+      );
+    }
   }
 }

@@ -88,3 +88,60 @@ INSERT INTO TableBookings (AccountID, CustomerName, NumberOfPeople, Phone, Booki
 (0, N'Trần Thị B', 2, '0343464516' ,'2024-07-02', '19:00:00', N'Sinh nhật bạn gái'),
 (0, N'Lê Văn C', 5, '0343464516' ,'2024-07-03', '20:00:00', N'Tiệc công ty')
 GO
+
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY IDENTITY(1,1),
+    OrderDate DATETIME NOT NULL,
+    AccountID INT,
+    TotalAmount DECIMAL(18, 2),
+    Status NVARCHAR(50),
+    FOREIGN KEY (AccountID) REFERENCES Accounts(AccountID)
+);
+CREATE TABLE OrderDetails (
+    OrderDetailID INT PRIMARY KEY IDENTITY(1,1),
+    OrderID INT,
+    DishID INT,
+    Quantity INT,
+    Price DECIMAL(18, 2),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    FOREIGN KEY (DishID) REFERENCES Dishes(DishID)
+);
+CREATE TABLE Payments (
+    PaymentID INT PRIMARY KEY IDENTITY(1,1),
+    OrderID INT,
+    PaymentDate DATETIME NOT NULL,
+    Amount DECIMAL(18, 2),
+    PaymentMethod NVARCHAR(50),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+);
+INSERT INTO Orders (OrderDate, AccountID, TotalAmount, Status)
+VALUES (GETDATE(), 1, 11.98, 'Pending');
+
+-- Thêm chi tiết đơn hàng mẫu
+INSERT INTO OrderDetails (OrderID, DishID, Quantity, Price)
+VALUES (1, 1, 2, 5.99);
+
+-- Thêm thanh toán mẫu
+INSERT INTO Payments (OrderID, PaymentDate, Amount, PaymentMethod)
+VALUES (1, GETDATE(), 11.98, 'Credit Card');
+
+SELECT 
+    o.OrderID,
+    o.OrderDate,
+    a.Username,
+    o.TotalAmount,
+    o.Status,
+    od.OrderDetailID,
+    d.Name AS DishName,
+    od.Quantity,
+    od.Price
+FROM 
+    Orders o
+JOIN 
+    Accounts a ON o.AccountID = a.AccountID
+JOIN 
+    OrderDetails od ON o.OrderID = od.OrderID
+JOIN 
+    Dishes d ON od.DishID = d.DishID
+WHERE 
+    o.OrderID = 1;
