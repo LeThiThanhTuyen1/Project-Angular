@@ -63,43 +63,34 @@ export class DishListComponent implements OnInit {
   addToCart(dishId: number) {
     const userId = this.authService.getUserId();
     if (userId) {
-      // Check for an existing order with status 'Spending'
-      this.orderService.getOrderByUserIdAndStatus(userId, 'Spending').subscribe(
-        (existingOrders: any) => {
-          if (existingOrders.length > 0) {
-            // If there is an existing order, simply log success message
-            console.log('Đã có đơn hàng hiện tại', existingOrders[0]);
-            alert('Đã có đơn hàng hiện tại.');
-          } else {
-            // If there is no existing order, create a new order
-            const newOrder = {
-              accountID: userId,
-              totalAmount: 0,
-              status: 'Spending'
-            };
+      const dish = this.allDishes.find(d => d.DishID === dishId);
+      if (dish) {
+        const cartData = {
+          dishID: dish.DishID,
+          accountID: userId,
+          price: dish.Price, // Đảm bảo trường price tồn tại trong dish
+          quantity: 1 // Giả sử số lượng là 1 khi thêm vào giỏ hàng
+        };
   
-            this.orderService.addOrder(newOrder).subscribe(
-              (response: any) => {
-                console.log('Thêm vào giỏ hàng thành công', response);
-                alert('Thêm thành công.');
-              },
-              error => {
-                console.error('Lỗi khi thêm vào giỏ hàng', error);
-                alert(`Lỗi khi thêm vào giỏ hàng: ${error.message}`);
-              }
-            );
-          }
-        },
-        error => {
-          console.error('Lỗi khi kiểm tra đơn hàng hiện có', error);
-          alert(`Lỗi khi kiểm tra đơn hàng hiện có: ${error.message}`);
-        }
-      );
+        this.cartService.addToCart(cartData)
+          .subscribe(
+            () => {
+              alert('Thêm vào giỏ hàng thành công.');
+            },
+            (error) => {
+              console.error('Lỗi khi thêm vào giỏ hàng:', error);
+              alert('Đã xảy ra lỗi khi thêm vào giỏ hàng.');
+            }
+          );
+      } else {
+        alert('Món ăn không tồn tại.');
+      }
     } else {
       alert('Bạn cần phải đăng nhập để thêm vào giỏ hàng.');
       this.authService.logout();
     }
-  }  
+  }
+     
   
   addOrderDetail(orderId: number, dishId: number) {
     // Example function to add order details using the orderId and dishId

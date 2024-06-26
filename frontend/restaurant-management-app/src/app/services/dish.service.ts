@@ -17,8 +17,9 @@ export class DishService {
   getAllDishes(): Observable<Dish[]> {
     return this.http.get<Dish[]>(`${this.apiUrl}/dishes`);
   }
-  getDishNameById(id: number): Observable<string> {
-    return this.http.get(`${this.apiUrl}/disdes/${id}/name`, { responseType: 'text' });
+  
+  getDishNameById(dishId: number): Observable<string> {
+    return this.http.get(`${this.apiUrl}/dishes/${dishId}/name`, { responseType: 'text' }); // Sử dụng responseType: 'text'
   }
 
   getDishById(id: number): Observable<Dish> {

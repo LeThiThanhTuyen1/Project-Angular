@@ -1,4 +1,3 @@
-﻿
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,18 +78,10 @@ namespace RestaurantManagementAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<OrderDetail>> PostOrderDetail(OrderDetail orderDetail)
         {
-            try
-            {
-                _context.OrderDetails.Add(orderDetail);
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("GetOrderDetail", new { id = orderDetail.OrderDetailID }, orderDetail);
-            }
-            catch (Exception ex)
-            {
-                // Log lỗi
-                Console.WriteLine($"Error adding order detail: {ex.Message}");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error adding order detail");
-            }
+            _context.OrderDetails.Add(orderDetail);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetOrderDetail", new { id = orderDetail.OrderDetailID }, orderDetail);
         }
 
         // DELETE: api/OrderDetails/5
