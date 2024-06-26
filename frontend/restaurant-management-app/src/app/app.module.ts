@@ -31,6 +31,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 import { AdminDishesComponent } from './component/admin/admin-home/admin-dishes/admin-dishes.component';
@@ -78,6 +79,7 @@ import { AuthService } from './services/auth.service';
     MatSidenavModule,
     MatToolbarModule, 
     FormsModule,
+    MatSnackBarModule,
     NgbModule
   ],
   providers: [

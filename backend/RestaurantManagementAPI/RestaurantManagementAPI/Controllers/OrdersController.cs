@@ -60,6 +60,13 @@ namespace RestaurantManagementAPI.Controllers
             return CreatedAtAction("GetOrder", new { id = order.OrderID }, order);
         }
 
+        [HttpGet("orders")]
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrdersByUserIdAndStatus(int userId, string status)
+        {
+            var orders = await _context.Orders.Where(o => o.AccountID == userId && o.Status == status).ToListAsync();
+            return Ok(orders);
+        }
+
         // DELETE: api/Orders/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(int id)

@@ -19,4 +19,8 @@ export class OrderService {
 
     return this.http.post<any>(`${this.apiUrl}`, order, { headers });
   }
+
+  getOrderByUserIdAndStatus(userId: number, status: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}?userId=${userId}&status=${status}`);
+  }
 }
