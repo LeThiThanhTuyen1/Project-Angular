@@ -21,10 +21,16 @@ namespace RestaurantManagementAPI.Controllers
             _context = context;
         }
 
-        [HttpPost("add")]
+            [HttpPost("add")]
         public IActionResult AddToOrder([FromBody] Order order)
         {
-            var existingOrder = _context.Orders.FirstOrDefault(o => o.AccountID == order.AccountID && o.Status == "Pending");
+            if (order == null || order.AccountID == 0)
+            {
+                return BadRequest("Invalid order data.");
+            }
+
+            var existingOrder = _context.Orders
+                .FirstOrDefault(o => o.AccountID == order.AccountID && o.Status == "Pending");
 
             if (existingOrder == null)
             {
@@ -33,86 +39,16 @@ namespace RestaurantManagementAPI.Controllers
                 {
                     AccountID = order.AccountID,
                     OrderDate = DateTime.Now,
-                    TotalAmount = 0,
-                    Status = "Pending",
-                    OrderDetails = new List<OrderDetail>()
+                    TotalAmount = order.TotalAmount,
+                    Status = order.Status,
                 };
                 _context.Orders.Add(existingOrder);
+                _context.SaveChanges();
             }
-
-            // Thêm chi tiết đơn hàng
-            foreach (var orderDetail in order.OrderDetails)
-            {
-                var dish = _context.Dishes.Find(orderDetail.DishID);
-                if (dish != null)
-                {
-                    existingOrder.OrderDetails.Add(new OrderDetail
-                    {
-                        DishID = orderDetail.DishID,
-                        Quantity = orderDetail.Quantity,
-                        Price = dish.Price
-                    });
-                    existingOrder.TotalAmount += dish.Price * orderDetail.Quantity;
-                }
-            }
-
-            _context.SaveChanges();
 
             return Ok(existingOrder);
         }
-
-        // GET: api/Orders
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
-        {
-            return await _context.Orders.ToListAsync();
-        }
-
-        // GET: api/Orders/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Order>> GetOrder(int id)
-        {
-            var order = await _context.Orders.FindAsync(id);
-
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            return order;
-        }
-
-        // PUT: api/Orders/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder(int id, Order order)
-        {
-            if (id != order.OrderID)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(order).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrderExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
+        
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -138,6 +74,13 @@ namespace RestaurantManagementAPI.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        [HttpGet]
+        public IActionResult GetOrders()
+        {
+            var orders = _context.Orders.ToList();  // Replace with your actual logic to fetch orders
+            return Ok(orders);
         }
 
         private bool OrderExists(int id)

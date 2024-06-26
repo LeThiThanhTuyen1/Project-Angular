@@ -8,6 +8,5 @@ namespace RestaurantManagementAPI.Models
         public decimal TotalAmount { get; set; }
         public string Status { get; set; } // Trạng thái đơn hàng (Pending, Completed, Cancelled, etc.)
 
-        public List<OrderDetail> OrderDetails { get; set; } // Chi tiết đơn hàng
     }
 }

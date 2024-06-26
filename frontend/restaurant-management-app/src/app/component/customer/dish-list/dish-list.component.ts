@@ -24,6 +24,7 @@ export class DishListComponent implements OnInit{
 
   constructor(public dishService: DishService, 
               private route: ActivatedRoute,
+              private router: Router,
               private authService: AuthService, 
               private orderService: OrderService,
               public categoryService: CategoryService) { }
@@ -61,18 +62,34 @@ export class DishListComponent implements OnInit{
   addToCart(dishId: number) {
     const userId = this.authService.getUserId();
     if (userId) {
-      this.orderService.addDishToOrder(userId, dishId).subscribe(response => {
-        console.log('Thêm vào giỏ hàng thành công', response);
-        // Hiển thị thông báo thành công hoặc cập nhật giao diện người dùng nếu cần
-      }, error => {
-        console.error('Lỗi khi thêm vào giỏ hàng', error);
-      });
+      const order = {
+        accountID: userId,
+        totalAmount: 0,
+        status: 'Spending'
+      };
+
+      this.orderService.addOrder(order).subscribe(
+        (response: any) => {
+          console.log('Thêm vào giỏ hàng thành công', response);
+          alert('Thêm thành công.');
+        },
+        error => {
+          console.error('Lỗi khi thêm vào giỏ hàng', error);
+          alert(`Lỗi khi thêm vào giỏ hàng: ${error.message}`);
+        }
+      );
     } else {
-      console.error('Người dùng chưa đăng nhập');
-      // Xử lý trường hợp người dùng chưa đăng nhập
+      alert('Bạn cần phải đăng nhập để thêm vào giỏ hàng.');
+      this.authService.logout();
     }
   }
-
+  
+  addOrderDetail(orderId: number, dishId: number) {
+    // Example function to add order details using the orderId and dishId
+    console.log(`Adding order detail for OrderID ${orderId} and DishID ${dishId}`);
+    // Implement your logic to add order details here
+  }   
+  
   getAllDishes(): void {
     this.dishService.getAllDishes().subscribe(
       data => {

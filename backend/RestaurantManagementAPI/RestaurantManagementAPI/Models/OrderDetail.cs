@@ -8,6 +8,5 @@ namespace RestaurantManagementAPI.Models
         public int Quantity { get; set; }
         public decimal Price { get; set; }
 
-        public Dish Dish { get; set; } // Thông tin món ăn
     }
 }
