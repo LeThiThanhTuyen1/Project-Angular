@@ -14,6 +14,7 @@ namespace RestaurantManagementAPI.Data
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<TableBooking> TableBookings { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
     }
 }

@@ -6,15 +6,15 @@ import { CategoryService } from '../../../services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../../services/cart.service';
 import { AuthService } from '../../../services/auth.service';
-import { error } from 'console';
 import { OrderService } from '../../../services/order.service';
+
 @Component({
   selector: 'app-dish-list',
   templateUrl: './dish-list.component.html',
   styleUrls: ['./dish-list.component.css'] 
 })
-export class DishListComponent implements OnInit{
-  
+export class DishListComponent implements OnInit {
+
   dishes: Dish[] = [];
   allDishes: any[] = [];
   filteredDishes: any[] = [];
@@ -22,12 +22,13 @@ export class DishListComponent implements OnInit{
   searchKeyword: string = '';
   selectedCategoryId: number | null = null;
 
-  constructor(public dishService: DishService, 
+  constructor(public dishService: DishService,
               private route: ActivatedRoute,
               private router: Router,
-              private authService: AuthService, 
+              private authService: AuthService,
               private orderService: OrderService,
-              public categoryService: CategoryService) { }
+              public categoryService: CategoryService,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -58,7 +59,7 @@ export class DishListComponent implements OnInit{
       }
     );
   }
-  
+
   addToCart(dishId: number) {
     const userId = this.authService.getUserId();
     if (userId) {
@@ -145,5 +146,4 @@ export class DishListComponent implements OnInit{
   getCategoryCount(categoryId: number): number {
     return this.allDishes.filter(dish => dish.CategoryID === categoryId).length;
   }
-
 }

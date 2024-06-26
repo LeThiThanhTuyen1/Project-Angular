@@ -1,10 +1,9 @@
 <div class="cart_section">
     <div class="container">
       <div class="row">
-        <div *ngFor="let item of cartItems" class="col-lg-3 col-md-6">
+        <div *ngFor="let item of cart" class="col-lg-3 col-md-6">
           <div class="cart_item">
-            <img style="width: 300px; height: 200px;" src="{{item.ImageURL}}">
-            <h3 class="item_name">{{ item.Name }}</h3>
+            <h3 class="item_name">{{ dishNames[item.DishID] }}</h3>
             <p class="item_price">{{ item.Price }} VNĐ</p>
             <p class="item_quantity">Số lượng: {{ item.Quantity }}</p>
           </div>

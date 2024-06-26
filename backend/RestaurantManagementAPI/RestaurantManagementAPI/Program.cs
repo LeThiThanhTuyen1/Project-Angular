@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using RestaurantManagementAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<RestaurantManagementAPIContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RestaurantManagementAPIContext") ?? throw new InvalidOperationException("Connection string 'RestaurantManagementAPIContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllers();

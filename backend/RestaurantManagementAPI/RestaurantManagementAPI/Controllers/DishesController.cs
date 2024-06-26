@@ -42,6 +42,22 @@ namespace RestaurantManagementAPI.Controllers
             return dish;
         }
 
+        [HttpGet("{id}/name")]
+        public async Task<ActionResult<string>> GetDishName(int id)
+        {
+            var dish = await _context.Dishes
+                .Where(c => c.DishID == id)
+                .Select(c => c.Name)
+                .FirstOrDefaultAsync();
+
+            if (dish == null)
+            {
+                return NotFound();
+            }
+
+            return dish;
+        }
+        
         [HttpGet("search")]
         public async Task<ActionResult<IEnumerable<Dish>>> SearchDishes(string keyword)
         {
