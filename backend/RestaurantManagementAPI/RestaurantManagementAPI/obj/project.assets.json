@@ -8373,23 +8373,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\FPT\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\hp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
+      "projectUniqueName": "D:\\CN Web\\Project-Angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
       "projectName": "RestaurantManagementAPI",
-      "projectPath": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
-      "packagesPath": "C:\\Users\\FPT\\.nuget\\packages\\",
-      "outputPath": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\obj\\",
+      "projectPath": "D:\\CN Web\\Project-Angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
+      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+      "outputPath": "D:\\CN Web\\Project-Angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\FPT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8397,7 +8393,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8479,7 +8474,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

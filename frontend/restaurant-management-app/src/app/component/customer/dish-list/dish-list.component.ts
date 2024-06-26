@@ -6,15 +6,15 @@ import { CategoryService } from '../../../services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../../services/cart.service';
 import { AuthService } from '../../../services/auth.service';
-import { error } from 'console';
 import { OrderService } from '../../../services/order.service';
+
 @Component({
   selector: 'app-dish-list',
   templateUrl: './dish-list.component.html',
   styleUrls: ['./dish-list.component.css'] 
 })
-export class DishListComponent implements OnInit{
-  
+export class DishListComponent implements OnInit {
+
   dishes: Dish[] = [];
   allDishes: any[] = [];
   filteredDishes: any[] = [];
@@ -22,12 +22,13 @@ export class DishListComponent implements OnInit{
   searchKeyword: string = '';
   selectedCategoryId: number | null = null;
 
-  constructor(public dishService: DishService, 
+  constructor(public dishService: DishService,
               private route: ActivatedRoute,
               private router: Router,
-              private authService: AuthService, 
+              private authService: AuthService,
               private orderService: OrderService,
-              public categoryService: CategoryService) { }
+              public categoryService: CategoryService,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -58,38 +59,23 @@ export class DishListComponent implements OnInit{
       }
     );
   }
-  
+
   addToCart(dishId: number) {
     const userId = this.authService.getUserId();
     if (userId) {
-      const order = {
-        accountID: userId,
-        totalAmount: 0,
-        status: 'Spending'
-      };
-
-      this.orderService.addOrder(order).subscribe(
-        (response: any) => {
-          console.log('Thêm vào giỏ hàng thành công', response);
-          alert('Thêm thành công.');
-        },
-        error => {
-          console.error('Lỗi khi thêm vào giỏ hàng', error);
-          alert(`Lỗi khi thêm vào giỏ hàng: ${error.message}`);
-        }
-      );
+      const dish = this.allDishes.find(d => d.DishID === dishId);
+      if (dish) {
+        this.cartService.addToCart(dish, userId);
+        alert('Thêm vào giỏ hàng thành công.');
+      } else {
+        alert('Món ăn không tồn tại.');
+      }
     } else {
       alert('Bạn cần phải đăng nhập để thêm vào giỏ hàng.');
       this.authService.logout();
     }
   }
-  
-  addOrderDetail(orderId: number, dishId: number) {
-    // Example function to add order details using the orderId and dishId
-    console.log(`Adding order detail for OrderID ${orderId} and DishID ${dishId}`);
-    // Implement your logic to add order details here
-  }   
-  
+
   getAllDishes(): void {
     this.dishService.getAllDishes().subscribe(
       data => {
@@ -129,5 +115,4 @@ export class DishListComponent implements OnInit{
   getCategoryCount(categoryId: number): number {
     return this.allDishes.filter(dish => dish.CategoryID === categoryId).length;
   }
-
 }

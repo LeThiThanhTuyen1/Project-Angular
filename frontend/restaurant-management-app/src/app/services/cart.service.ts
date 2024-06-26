@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Dish } from '../models/dish.model';
-import { CartItem } from '../models/cart-item.model';
+import { Cart } from '../models/cart.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private items: CartItem[] = [];
-  private itemsSubject = new BehaviorSubject<CartItem[]>(this.items);
+  private items: Cart[] = [];
+  private itemsSubject = new BehaviorSubject<Cart[]>(this.items);
 
-  addToCart(dish: Dish) {
+  addToCart(dish: Dish, iduser: number) {
     const existingItem = this.items.find(item => item.DishID === dish.DishID);
     if (existingItem) {
       existingItem.Quantity++;
     } else {
       this.items.push({
         DishID: dish.DishID,
-        Name: dish.Name,
+        AccountID: iduser,
         Price: dish.Price,
         Quantity: 1,
-        ImageURL: dish.ImageURL
       });
     }
     this.itemsSubject.next(this.items);
@@ -33,4 +33,5 @@ export class CartService {
     this.items = [];
     this.itemsSubject.next(this.items);
   }
+  
 }
